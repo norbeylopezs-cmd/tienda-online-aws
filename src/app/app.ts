@@ -13,19 +13,23 @@ export class App {
   products = [
     {
       name: 'Camiseta Negra',
-      price: 80000
+      price: 80000,
+      image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600'
     },
     {
       name: 'Camisa Azul',
-      price: 120000
+      price: 120000,
+      image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600'
     },
     {
       name: 'Chaqueta Deportiva',
-      price: 180000
+      price: 180000,
+       image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600'
     },
     {
       name: 'Jean Azul',
-      price: 95000
+      price: 95000,
+      image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600'
     }
   ];
 

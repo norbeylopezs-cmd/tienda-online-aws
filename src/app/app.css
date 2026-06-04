@@ -5,6 +5,8 @@ body {
   color: #222;
 }
 
+/* HEADER */
+
 .header {
   background: white;
   padding: 25px 60px;
@@ -33,6 +35,8 @@ body {
   font-weight: bold;
 }
 
+/* BIENVENIDA */
+
 .welcome {
   text-align: center;
   margin-top: 70px;
@@ -49,6 +53,8 @@ body {
   font-size: 18px;
 }
 
+/* PRODUCTOS */
+
 .products {
   display: flex;
   justify-content: center;
@@ -60,7 +66,7 @@ body {
 .card {
   background: white;
   width: 260px;
-  padding:22px;
+  padding: 22px;
   border-radius: 18px;
   text-align: center;
   border: 1px solid #ececec;
@@ -69,8 +75,25 @@ body {
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
+
+/* IMÁGENES DE PRODUCTOS */
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+/* TEXTO DE PRODUCTOS */
 
 .card h3 {
   margin-bottom: 15px;
@@ -84,6 +107,8 @@ body {
   color: #1f1f1f;
   margin: 15px 0;
 }
+
+/* BOTONES GENERALES */
 
 button {
   background: #1f1f1f;
@@ -103,8 +128,10 @@ button:hover {
   transform: translateY(-2px);
 }
 
+/* CARRITO */
+
 .cart-section {
-  width: 80%;
+  width: 55%;
   margin: 50px auto;
   background: white;
   padding: 30px;
@@ -116,6 +143,14 @@ button:hover {
   margin-bottom: 20px;
   font-size: 36px;
 }
+
+.total {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* ITEMS DEL CARRITO */
 
 .cart-item {
   display: grid;
@@ -150,19 +185,15 @@ button:hover {
   font-weight: 500;
 }
 
+/* BOTÓN ELIMINAR */
+
 .cart-item button {
   width: 110px;
   height: 42px;
   border-radius: 10px;
-  background: #d9534f;
+  background: #e74c3c;
 }
 
 .cart-item button:hover {
-  background: #c9302c;
-}
-
-.total {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  background: #c0392b;
 }
