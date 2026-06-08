@@ -1,17 +1,56 @@
 <header class="header">
-  <h1>TiendaRopa</h1>
 
-  <nav>
-    <a href="#">Inicio</a>
+  <div class="logo">
+    <h1>UrbanStore</h1>
+  </div>
+
+  <nav class="nav-links">
     <a href="#">Productos</a>
     <a href="#">Carrito</a>
+
+    <div class="cart-badge">
+      🛒 {{ cart.length }}
+    </div>
   </nav>
+
 </header>
 
-<section class="welcome">
-  <h2>Bienvenido a nuestra tienda virtual de ropa</h2>
-  <p>Encuentra ropa moderna al mejor precio.</p>
+<section class="hero">
+
+  <div class="hero-text">
+
+    <span class="tag">
+      🔥 Nueva colección
+    </span>
+
+    <h2>
+      Descubre tu estilo urbano
+    </h2>
+
+    <p>
+      Ropa moderna y accesorios
+      para cada ocasión.
+    </p>
+
+    <button class="hero-btn">
+      Ver productos
+    </button>
+
+  </div>
+
+  <div class="hero-image">
+
+    <img
+      src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
+      alt="Moda Urbana"
+    />
+
+  </div>
+
 </section>
+<h2 class="products-title">
+  Productos destacados
+</h2>
 
 <section class="products">
 
@@ -37,7 +76,10 @@
 
 </section>
 
-<section class="cart-section">
+<section
+  class="cart-section"
+  *ngIf="cart.length > 0"
+>
 
   <h2>Carrito({{ cart.length }})</h2>
 
