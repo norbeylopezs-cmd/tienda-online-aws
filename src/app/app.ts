@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// Configuración del componente principal
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
 
+   // Lista de productos disponibles en la tienda
   products = [
     {
       name: 'Camiseta Negra',
@@ -32,11 +34,13 @@ export class App {
       image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600'
     }
   ];
-
+  // Carrito de compras
   cart: any[] = [];
 
+  // Total acumulado de compra
   total = 0;
 
+  // Agrega productos al carrito y actualiza el total
   addToCart(productName: string, price: number) {
 
     this.cart.push({
@@ -48,7 +52,7 @@ export class App {
 
     console.log(this.cart);
   }
-
+  // Elimina productos del carrito
   removeFromCart(index: number) {
 
     this.total -= this.cart[index].price;

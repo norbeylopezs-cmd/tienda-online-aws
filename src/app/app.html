@@ -1,13 +1,16 @@
+<!-- Encabezado principal -->
 <header class="header">
 
   <div class="logo">
     <h1>UrbanStore</h1>
   </div>
 
+  <!-- Barra de navegación -->
   <nav class="nav-links">
     <a href="#">Productos</a>
     <a href="#">Carrito</a>
 
+    <!-- Contador del carrito -->
     <div class="cart-badge">
       🛒 {{ cart.length }}
     </div>
@@ -15,29 +18,35 @@
 
 </header>
 
+<!-- Sección principal de bienvenida -->
 <section class="hero">
 
   <div class="hero-text">
 
+    <!-- Etiqueta promocional -->
     <span class="tag">
       🔥 Nueva colección
     </span>
 
+    <!-- Título principal -->
     <h2>
       Descubre tu estilo urbano
     </h2>
 
+    <!-- Texto descriptivo -->
     <p>
       Ropa moderna y accesorios
       para cada ocasión.
     </p>
 
+    <!-- Botón principal -->
     <button class="hero-btn">
       Ver productos
     </button>
 
   </div>
 
+  <!-- Imagen principal -->
   <div class="hero-image">
 
     <img
@@ -48,26 +57,34 @@
   </div>
 
 </section>
+
+<!-- Título de productos -->
 <h2 class="products-title">
   Productos destacados
 </h2>
 
+<!-- Sección de productos -->
 <section class="products">
 
+  <!-- Recorre los productos dinámicamente -->
   <div class="card" *ngFor="let product of products">
 
+  <!-- Imagen del producto -->
   <img
     [src]="product.image"
     alt="{{ product.name }}"
     class="product-image"
   />
 
+  <!-- Nombre del producto -->
   <h3>{{ product.name }}</h3>
 
+  <!-- Precio del producto -->
   <p class="price">
   {{ product.price.toLocaleString('es-CO') }}
 </p>
 
+  <!-- Botón agregar al carrito -->
   <button (click)="addToCart(product.name, product.price)">
     Agregar al carrito
   </button>
@@ -76,29 +93,37 @@
 
 </section>
 
+<!-- Sección del carrito -->
 <section
   class="cart-section"
   *ngIf="cart.length > 0"
 >
 
+  <!-- Cantidad de productos -->
   <h2>Carrito({{ cart.length }})</h2>
 
+  <!-- Total de la compra -->
   <p>Total: ${{ total.toLocaleString('es-CO') }}</p>
 
+  <!-- Mensaje cuando está vacío -->
   <p *ngIf="cart.length === 0">
     Tu carrito está vacío
   </p>
 
+  <!-- Lista de productos del carrito -->
   <div
     class="cart-item"
     *ngFor="let item of cart; let i = index"
   >
+    <!-- Nombre del producto -->
     <p>{{ item.name }}</p>
 
+    <!-- Precio del producto -->
     <p class="cart-price">
       ${{ item.price.toLocaleString('es-CO') }}
     </p>
 
+    <!-- Botón eliminar -->
     <button (click)="removeFromCart(i)">
       Eliminar
     </button>
