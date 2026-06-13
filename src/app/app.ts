@@ -32,6 +32,11 @@ export class App {
       name: 'Jean Azul',
       price: 95000,
       image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600'
+    },
+    {
+      name: 'ropa interior',
+      price: 50000,
+      image: 'https://www.ostu.com/on/demandware.static/-/Sites-storefront_catalog_ostu/default/dw04eb8a9f/images/filters/carrusel-ropa-interior-general-panties.webp'
     }
   ];
   // Carrito de compras

@@ -1,103 +1,604 @@
-<!-- Encabezado principal -->
-<header class="header">
+<!-- HEADER SUPERIOR NEGRO -->
+<div class="top-banner">
+  ADIDAS X COPA MUNDIAL DE LA FIFA 26™
+  <span class="banner-arrow">▼</span>
+</div>
+<div class="top-links">
 
-  <div class="logo">
-    <h1>UrbanStore</h1>
+  <a href="#">buscador de tiendas</a>
+  <a href="#">ayuda</a>
+  <a href="#">pedidos y devoluciones</a>
+  <a href="#">bonos de regalo</a>
+  <a href="#">únete al club</a>
+
+</div>
+<!-- HEADER PRINCIPAL -->
+<header class="header-adidas">
+
+  <!-- Logo -->
+ <div class="logo">
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/731/731962.png"
+    alt="Adidas Logo"
+  />
+</div>
+
+  <!-- Menú -->
+  <nav class="nav-links">
+  <a href="#">MUJER</a>
+  <a href="#">HOMBRE</a>
+  <a href="#">NIÑOS</a>
+
+  <a href="#" class="fifa-link">
+    COPA MUNDIAL DE LA FIFA 26™ 🏆
+  </a>
+
+  <a href="#">DEPORTE</a>
+
+  <a href="#" class="outlet">
+    OUTLET
+  </a>
+</nav>
+
+ <!-- Parte derecha -->
+<div class="header-right">
+
+  <!-- Buscador -->
+  <div class="search-container">
+
+    <input
+      type="text"
+      placeholder="Buscar"
+      class="search-box"
+    />
+
+   <span class="material-icons-outlined search-icon">
+    search
+  </span>
+
   </div>
 
-  <!-- Barra de navegación -->
-  <nav class="nav-links">
-    <a href="#">Productos</a>
-    <a href="#">Carrito</a>
+  <!-- Usuario -->
+  <div class="icon-circle">
 
-    <!-- Contador del carrito -->
-    <div class="cart-badge">
-      🛒 {{ cart.length }}
+    <span class="material-icons-outlined">
+      person
+    </span>
+
+    <span class="badge-user">
+      1
+    </span>
+
+  </div>
+
+  <!-- Favoritos -->
+  <div class="icon-heart">
+    <span class="material-icons-outlined">
+      favorite_border
+    </span>
+  </div>
+  <!-- Carrito -->
+  <div class="cart-wrapper">
+
+    <div class="cart-icon">
+      <span class="material-icons-outlined">
+        shopping_bag
+      </span>
     </div>
-  </nav>
+
+    <span class="badge-cart">
+      {{ cart.length }}
+    </span>
+
+  </div>
+
+</div>
 
 </header>
 
-<!-- Sección principal de bienvenida -->
-<section class="hero">
+<!-- BANNER PRINCIPAL ADIDAS -->
 
-  <div class="hero-text">
+<section class="shop-color">
 
-    <!-- Etiqueta promocional -->
-    <span class="tag">
-      🔥 Nueva colección
-    </span>
+  <h2>
+    COMPRA POR COLOR 🎨
+  </h2>
 
-    <!-- Título principal -->
-    <h2>
-      Descubre tu estilo urbano
-    </h2>
+  <div class="colors-grid">
 
-    <!-- Texto descriptivo -->
-    <p>
-      Ropa moderna y accesorios
-      para cada ocasión.
-    </p>
+    <div class="color-card">
+      <div class="color black"></div>
+      <p>Negro</p>
+    </div>
 
-    <!-- Botón principal -->
-    <button class="hero-btn">
-      Ver productos
-    </button>
+    <div class="color-card">
+      <div class="color red"></div>
+      <p>Rojo</p>
+    </div>
 
-  </div>
+    <div class="color-card">
+      <div class="color white"></div>
+      <p>Blanco</p>
+    </div>
 
-  <!-- Imagen principal -->
-  <div class="hero-image">
-
-    <img
-      src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
-      alt="Moda Urbana"
-    />
+    <div class="color-card">
+      <div class="color green"></div>
+      <p>Verde</p>
+    </div>
 
   </div>
 
 </section>
+<section class="find-section">
 
-<!-- Título de productos -->
-<h2 class="products-title">
-  Productos destacados
-</h2>
+  <div class="find-header">
+
+    <h2>
+      ENCUENTRA LO QUE BUSCAS
+    </h2>
+
+    <a href="#">
+      VER TODO
+    </a>
+
+  </div>
+
+  <div class="categories">
+
+    <button>CALZADO</button>
+    <button>SHORTS</button>
+    <button>PANTALONES</button>
+    <button>ACCESORIOS</button>
+
+  </div>
+
+</section>
 
 <!-- Sección de productos -->
 <section class="products">
 
   <!-- Recorre los productos dinámicamente -->
-  <div class="card" *ngFor="let product of products">
+  <div class="product-card" *ngFor="let product of products">
 
-  <!-- Imagen del producto -->
-  <img
-    [src]="product.image"
-    alt="{{ product.name }}"
-    class="product-image"
-  />
+  <!-- Imagen -->
+  <div class="product-image-container">
+    <img
+      [src]="product.image"
+      alt="{{ product.name }}"
+      class="product-image"
+    />
+  </div>
 
-  <!-- Nombre del producto -->
-  <h3>{{ product.name }}</h3>
+  <!-- Información -->
+<div class="product-info">
 
-  <!-- Precio del producto -->
-  <p class="price">
-  {{ product.price.toLocaleString('es-CO') }}
-</p>
+    <p class="product-price">
+      ${{ product.price.toLocaleString('es-CO') }}
+    </p>
 
-  <!-- Botón agregar al carrito -->
-  <button (click)="addToCart(product.name, product.price)">
-    Agregar al carrito
-  </button>
+    <h3 class="product-name">
+      {{ product.name }}
+    </h3>
+
+    <p class="product-category">
+      Hombre Originals
+    </p>
+
+  </div>
+
+  <!--
+<button
+  class="add-cart-btn"
+  (click)="addToCart(product.name, product.price)"
+>
+  Agregar al carrito
+</button>
+-->
 
 </div>
 
 </section>
+<section class="passion-section">
 
-<!-- Sección del carrito -->
+  <h2 class="passion-title">
+    ENCUENTRA TU PASIÓN
+  </h2>
+
+  <div class="passion-grid">
+
+    <div class="passion-card">
+      <img
+        src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=900"
+        alt="Fútbol"
+      />
+      <span>Vístete con lo último en fútbol</span>
+    </div>
+
+    <div class="passion-card">
+      <img
+        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=900"
+        alt="Running"
+      />
+      <span>Prepárate para sumar kilómetros</span>
+    </div>
+
+    <div class="passion-card">
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900"
+        alt="Gym"
+      />
+      <span>Entrena con ropa cómoda y funcional</span>
+    </div>
+
+    <div class="passion-card">
+      <img
+        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=900"
+        alt="Basket"
+      />
+      <span>Todo lo que necesitas para dentro y fuera de la cancha</span>
+    </div>
+
+  </div>
+
+</section>
+<!-- NOVEDADES HOMBRE -->
+<section class="news-section">
+
+  <div class="news-header">
+
+    <div class="news-tabs">
+      <button class="active-tab">
+        NOVEDADES
+      </button>
+
+      <button>
+        TARJETAS DE REGALO
+      </button>
+
+      <button>
+        VER TODO HOMBRE
+      </button>
+
+      <button>
+        MASCOTAS
+      </button>
+    </div>
+
+    <a href="#">
+      VER TODO
+    </a>
+
+  </div>
+
+  <!-- Productos -->
+  <div class="news-products">
+
+    <div
+      class="product-card"
+      *ngFor="let product of products"
+    >
+
+      <div class="product-image-container">
+
+        <img
+          [src]="product.image"
+          alt="{{ product.name }}"
+          class="product-image"
+        />
+
+      </div>
+
+      <div class="product-info">
+
+        <p class="product-price">
+          ${{ product.price.toLocaleString('es-CO') }}
+        </p>
+
+        <h3 class="product-name">
+          {{ product.name }}
+        </h3>
+
+        <p class="product-category">
+          Performance
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TITULO SIGUIENTE -->
+<section class="season-title">
+
+  <h2>
+    COLORES Y ESTILOS DE TEMPORADA
+  </h2>
+
+</section>
+
+
+<section class="season-cards">
+
+  <div class="season-card">
+
+    <img
+      src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+      alt=""
+    >
+
+    <div class="season-content">
+      <h3>
+        La comodidad es una forma de vida
+      </h3>
+
+      <p>
+        Vestirse cómodo es más que una elección estética.
+      </p>
+
+      <a href="#">
+        Descubre combinaciones y estilos
+      </a>
+    </div>
+
+  </div>
+
+  <div class="season-card">
+
+    <img
+      src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900"
+      alt=""
+    >
+
+    <div class="season-content">
+      <h3>
+        Calzado inspirado en el streetwear
+      </h3>
+
+      <p>
+        Robustos, cómodos y con presencia.
+      </p>
+
+      <a href="#">
+        Comprar ahora
+      </a>
+    </div>
+
+  </div>
+
+  <div class="season-card">
+
+    <img
+      src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+      alt=""
+    >
+
+    <div class="season-content">
+      <h3>
+        Lo retro solo evolucionó
+      </h3>
+
+      <p>
+        Cortes anchos, estampados y denim.
+      </p>
+
+      <a href="#">
+        Encuentra lo que necesitas
+      </a>
+    </div>
+
+  </div>
+
+</section>
+<!-- INSPÍRATE Y CREA TU LOOK -->
+<section class="look-section">
+
+  <h2 class="look-title">
+    INSPÍRATE Y CREA TU LOOK
+  </h2>
+
+  <div class="look-grid">
+
+    <div class="look-card">
+      <img
+        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        alt=""
+      />
+
+      <div class="look-badge">
+        3 artículos ↗
+      </div>
+    </div>
+
+    <div class="look-card">
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900"
+        alt=""
+      />
+
+      <div class="look-badge">
+        2 artículos ↗
+      </div>
+    </div>
+
+    <div class="look-card">
+      <img
+        src="https://images.unsplash.com/photo-1504593811423-6dd665756598?w=900"
+        alt=""
+      />
+
+      <div class="look-badge">
+        3 artículos ↗
+      </div>
+    </div>
+
+    <div class="look-card">
+      <img
+        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900"
+        alt=""
+      />
+
+      <div class="look-badge">
+        4 artículos ↗
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<section class="categories-footer">
+
+  <div class="categories-container">
+
+    <div class="category-column">
+      <h3>ROPA PARA HOMBRE</h3>
+      <a href="#">Camisetas</a>
+      <a href="#">Buzos</a>
+      <a href="#">Chaquetas</a>
+      <a href="#">Shorts</a>
+      <a href="#">Pantalones</a>
+    </div>
+
+    <div class="category-column">
+      <h3>CALZADO PARA HOMBRE</h3>
+      <a href="#">Tenis Negros</a>
+      <a href="#">Tenis Blancos</a>
+      <a href="#">Tenis Running</a>
+      <a href="#">Zapatos De Deporte</a>
+      <a href="#">Tenis Bota</a>
+    </div>
+
+    <div class="category-column">
+      <h3>ACCESORIOS PARA HOMBRE</h3>
+      <a href="#">Morrales</a>
+      <a href="#">Medias</a>
+      <a href="#">Gorras</a>
+      <a href="#">Canilleras</a>
+      <a href="#">Tapabocas</a>
+    </div>
+
+    <div class="category-column">
+      <h3>COLECCIONES</h3>
+      <a href="#">Running</a>
+      <a href="#">Fútbol</a>
+      <a href="#">Outdoor</a>
+      <a href="#">Training</a>
+      <a href="#">Originals</a>
+    </div>
+
+  </div>
+
+</section>
+<!-- FRANJA CLUB -->
+<section class="club-banner">
+
+  <h2>
+    ÚNETE AL CLUB Y RECIBE 300 PUNTOS DE BIENVENIDA
+  </h2>
+
+  <button>
+    INICIA SESIÓN O REGÍSTRATE GRATIS →
+  </button>
+
+</section>
+<!-- FOOTER PRINCIPAL -->
+<section class="footer-main">
+
+  <div class="footer-column">
+    <h3>PRODUCTOS</h3>
+    <a href="#">Mujer</a>
+    <a href="#">Hombre</a>
+    <a href="#">Calzado</a>
+    <a href="#">Tenis</a>
+    <a href="#">Ropa</a>
+    <a href="#">Accesorios</a>
+    <a href="#">Guayos</a>
+  </div>
+
+  <div class="footer-column">
+    <h3>DEPORTES</h3>
+    <a href="#">Selección Colombia</a>
+    <a href="#">Millonarios</a>
+    <a href="#">Fútbol</a>
+    <a href="#">Running</a>
+    <a href="#">Training</a>
+
+    <h3 class="footer-subtitle">
+      COLECCIONES
+    </h3>
+
+    <a href="#">Ultraboost</a>
+    <a href="#">Originals</a>
+    <a href="#">Forum</a>
+  </div>
+
+  <div class="footer-column">
+    <h3>ASISTENCIA</h3>
+    <a href="#">Dudas Frecuentes</a>
+    <a href="#">Realizar Pedidos</a>
+    <a href="#">Productos adidas</a>
+    <a href="#">Ventas por Whatsapp</a>
+    <a href="#">Pago</a>
+    <a href="#">Envío</a>
+    <a href="#">Devoluciones</a>
+  </div>
+
+  <div class="footer-column">
+    <h3>INFORMACIÓN DE LA EMPRESA</h3>
+    <a href="#">Acerca de adidas</a>
+    <a href="#">Trabaja en Nuestro Equipo</a>
+    <a href="#">Prensa</a>
+
+    <h3 class="footer-subtitle">
+      TIENDAS
+    </h3>
+
+    <a href="#">Buscador de Tiendas</a>
+
+    <h3 class="footer-subtitle">
+      NUESTRO MUNDO
+    </h3>
+
+    <a href="#">Impacto</a>
+    <a href="#">Personas</a>
+    <a href="#">Planeta</a>
+  </div>
+
+ <div class="footer-column social-column">
+
+  <h3>SÍGUENOS</h3>
+
+  <div class="social-icons">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-x-twitter"></i>
+    <i class="fab fa-pinterest-p"></i>
+    <i class="fab fa-tiktok"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
+
+</div>
+</section>
+<div class="footer-bottom">
+  <a href="#">Términos y Condiciones</a>
+  <a href="#">Términos y Condiciones Promociones</a>
+  <a href="#">Política de Privacidad</a>
+  <a href="#">Seleccionar País</a>
+  <a href="#">Uso del Sitio</a>
+  <a href="#">SIC</a>
+  <a href="#">PQR</a>
+
+  <p>2024 adidas, adidas Colombia Ltda.</p>
+</div>
 <section
   class="cart-section"
   *ngIf="cart.length > 0"
 >
+<!-- Sección del carrito -->
+
 
   <!-- Cantidad de productos -->
   <h2>Carrito({{ cart.length }})</h2>
