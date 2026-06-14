@@ -129,7 +129,7 @@ transform: translateY(-8px);
   display: flex;
   align-items: center;
 
-  gap: 14px;
+  gap: 10px;
 
   margin-left: auto;
 }
@@ -220,7 +220,7 @@ transform: translateY(-8px);
 
 /* COMPRA POR COLOR */
 .shop-color {
-  padding: 44px 90px 13px;
+  padding: 44px 110px 13px;
 }
 
 .shop-color h2 {
@@ -295,7 +295,7 @@ transform: translateY(-8px);
 
 /* ENCUENTRA */
 .find-section {
-  padding: 28px 92px 0;
+  padding: 28px 110px 0;
 }
 
 .find-header {
@@ -354,20 +354,23 @@ transform: translateY(-8px);
 
 .products {
   display: flex;
-  gap: 4px;
+  gap: 12px;
+
   overflow-x: auto;
   overflow-y: hidden;
-  width: 100%;
-  max-width: 100vw;
-  padding: 20px 0px;
-  box-sizing: border-box;
-  scrollbar-width: thin;
-}
 
+  padding: 20px 92px 26px 110px;
+
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+}
 /* CARD */
 
 .product-card {
-  min-width: 330px;
+  min-width: 345px;
+  flex-shrink: 0;
+
   display: flex;
   flex-direction: column;
 }
@@ -375,12 +378,16 @@ transform: translateY(-8px);
 /* CONTENEDOR IMAGEN */
 
 .product-image-container {
-  background: #ececec;
-  height: 290px;
+  background: #eceff1;
+
+  height: 340px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   position: relative;
+  overflow: hidden;
 }
 /* CORAZÓN */
 
@@ -396,32 +403,39 @@ transform: translateY(-8px);
 /* IMAGEN */
 
 .product-image {
-  width: 85%;
-  height: 220px;
+  width: 82%;
+  height: 250px;
   object-fit: contain;
+  transform: scale(1.4);
+
 }
+
 
 /* INFO */
 
 .product-info {
-  margin-top: 6px;
+  padding-top: 18px;
+  padding-bottom: 22px;
 }
-
 .product-price {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 13px;
 }
 
 .product-name {
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 8px;
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 
 .product-category {
   color: #767677;
-  font-size: 15px;
+  font-size: 14px;
+  margin-bottom: 18px;
+  margin-top: 12px;
 }
 
 /* BOTÓN */
@@ -443,7 +457,7 @@ transform: translateY(-8px);
 
 /* CARRITO */
 .cart-section {
-  margin: 60px 80px;
+  margin: 60px 110px;
   border-top: 1px solid #ddd;
   padding-top: 30px;
 }
@@ -468,23 +482,37 @@ transform: translateY(-8px);
   cursor: pointer;
 }
 .products::-webkit-scrollbar {
-  height: 6px;
+  height: 5px; /* más delgada */
+  cursor: pointer;
 }
 
 .products::-webkit-scrollbar-track {
   background: #e5e5e5;
+
+  margin-left: 105px;
+  margin-right: 255px;
+
+  cursor: pointer;
 }
 
 .products::-webkit-scrollbar-thumb {
   background: black;
+  cursor: pointer;
+}
+.products::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 /* ==========================
    ENCUENTRA TU PASIÓN
 ========================== */
 
 .passion-section {
-  width: 92%;
-  margin: 90px auto;
+  width: 100%;
+  margin: 90px 0;
+  padding: 0 110px;
+  box-sizing: border-box;
 }
 
 .passion-title {
@@ -502,7 +530,7 @@ transform: translateY(-8px);
 .passion-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 14px;
 }
 
 /* CARD */
@@ -512,15 +540,10 @@ transform: translateY(-8px);
   overflow: hidden;
   cursor: pointer;
   background: #eee;
+
   height: 470px;
 }
 
-.passion-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
 
 .passion-card:hover img {
   transform: scale(1.03);
@@ -530,16 +553,17 @@ transform: translateY(-8px);
 
 .passion-card span {
   position: absolute;
-  bottom: 10px;
+  bottom: 14px;
   left: 14px;
   background: white;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 700;
-  color: black;
-  max-width: 80%;
-}
+  padding: 10px 14px;
 
+  font-size: 13px;
+  font-weight: 700;
+
+  color: black;
+  max-width: 78%;
+}
 /* BOTONES ABAJO */
 
 .passion-buttons {
@@ -568,8 +592,8 @@ transform: translateY(-8px);
 ========================================== */
 
 .news-section {
-  width: 92%;
-  margin: 70px auto;
+  width: 88%;
+  margin: 110px auto;
 }
 
 /* Header */
@@ -596,13 +620,18 @@ transform: translateY(-8px);
 }
 
 .news-tabs button {
+  border: 1px solid #d4d7da;
   background: white;
-  border: 1px solid #cfcfcf;
   color: black;
-  font-size: 18px;
-  padding: 14px 22px;
-  width: auto;
-  border-radius: 0;
+
+  height: 48px;
+  padding: 0 22px;
+
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+
   cursor: pointer;
 }
 
@@ -616,21 +645,64 @@ transform: translateY(-8px);
 .news-products {
   display: flex;
   gap: 10px;
+
   overflow-x: auto;
+  overflow-y: hidden;
+
+  padding-bottom: 38px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+/* SCROLL PRODUCTOS ESTILO ADIDAS */
+.products-container::-webkit-scrollbar {
+  height: 3px;
 }
 
+.products-container::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  margin: 0 95px; /* hace la barra más corta */
+}
+
+.products-container::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.products-container::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Firefox */
+.products-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+
+  scrollbar-width: thin;
+  scrollbar-color: black #e5e5e5;
+}
 .news-products .product-card {
   min-width: 300px;
+}
+.news-products .product-image {
+  width: 88%;
+  height: 230px;
+  object-fit: contain;
+
+  transform: scale(1.5);
 }
 
 /* Scroll Adidas */
 
 .news-products::-webkit-scrollbar {
-  height: 3px;
+  height: 6px;
 }
 
 .news-products::-webkit-scrollbar-track {
   background: #e5e5e5;
+   margin-left: 100px;
+  margin-right: 140px;
 }
 
 .news-products::-webkit-scrollbar-thumb {
@@ -640,38 +712,50 @@ transform: translateY(-8px);
 /* TITULO SIGUIENTE */
 
 .season-title {
-  width: 92%;
-  margin: 50px auto 20px;
+  margin-left: 85px;
+  margin-bottom: 30px;
+
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .season-title h2 {
-  font-size: 42px;
+  font-size: 28px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   margin: 0;
+
   text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
 }
 /* ==========================
    COLORES Y TEMPORADA
 ========================== */
 
 .season-cards {
-  width: 92%;
+  width: calc(100% - 165px);
   margin: 20px auto 80px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .season-card {
-  border: 1px solid #d9d9d9;
   background: white;
-}
+  transition: border 0.2s ease;
 
+  border: 1px solid transparent;
+}
+.season-card:hover {
+  border: 1px solid #000;
+}
 .season-card img {
   width: 100%;
   height: 520px;
   object-fit: cover;
+  display: block;
 }
 
 .season-content {
@@ -688,6 +772,7 @@ transform: translateY(-8px);
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 22px;
+  min-height: 72px;
 }
 
 .season-content a {
@@ -703,7 +788,10 @@ transform: translateY(-8px);
   width: 100%;
   max-width: 100%;
   margin: 80px 0;
+  padding-left: 110px;
+
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .look-title {
@@ -716,14 +804,15 @@ transform: translateY(-8px);
 
 .look-grid {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 
   width: 100%;
 
   overflow-x: auto;
   overflow-y: hidden;
 
-  padding: 16px 0;
+  padding: 16px 110px 30px 0;
+
   box-sizing: border-box;
 }
 
@@ -731,13 +820,12 @@ transform: translateY(-8px);
 
 .look-card {
   position: relative;
-  flex: 0 0 380px;
-  min-width: unset;
-  height: 620px;
+  flex: 0 0 345px;
+  height: 640px;
+
   overflow: hidden;
   background: #eee;
 }
-
 .look-card img {
   width: 100%;
   height: 100%;
@@ -978,4 +1066,17 @@ app-hombre {
   color: white;
   font-size: 14px;
   margin-top: 20px;
+}
+/* SOLO imágenes de "Encuentra tu pasión" */
+.passion-card {
+  overflow: hidden;
+}
+
+.passion-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  object-position: center;
+  transform: scale(1);
 }
