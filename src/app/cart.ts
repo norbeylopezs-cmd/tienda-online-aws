@@ -5,9 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class Cart {
 
-  cart: any[] = [];
+  cart: any[] = JSON.parse(
+  localStorage.getItem('cart') || '[]'
+);
 
-  total = 0;
+  total = this.cart.reduce(
+  (sum, item) => sum + (item.price * item.quantity),
+  0
+);
 
   addToCart(product: any) {
 
@@ -30,17 +35,29 @@ export class Cart {
   }
 
   this.total += product.price;
+  localStorage.setItem(
+  'cart',
+  JSON.stringify(this.cart)
+);
 }
   removeFromCart(index: number) {
 
     this.total -= this.cart[index].price;
 
     this.cart.splice(index, 1);
+        localStorage.setItem(
+      'cart',
+      JSON.stringify(this.cart)
+    );
   }
   increaseQuantity(item: any) {
 
   item.quantity++;
   this.total += item.price;
+    localStorage.setItem(
+    'cart',
+    JSON.stringify(this.cart)
+  );
 }
 
 decreaseQuantity(index: number) {
@@ -53,6 +70,10 @@ decreaseQuantity(index: number) {
   if (item.quantity === 0) {
     this.cart.splice(index, 1);
   }
+  localStorage.setItem(
+    'cart',
+    JSON.stringify(this.cart)
+  );
 }
 
 getTotalItems() {

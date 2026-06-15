@@ -18,7 +18,7 @@ export class App {
   private router: Router
 ) {}
   mostrarTienda() {
-  return window.location.pathname !== '/carrito';
+  return window.location.pathname === '/';
 }
 goToCart() {
   this.router.navigate(['/carrito']);

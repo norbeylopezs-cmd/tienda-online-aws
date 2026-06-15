@@ -51,7 +51,7 @@ body {
   justify-content: center;
 
   position: fixed;
-  top: -12px;
+  top: 0;
   left: 0;
   width: 100%;
 
@@ -75,7 +75,7 @@ body {
   justify-content: space-between;
 
   position: fixed;
-  top: 22px;
+  top: 40px;
   left: 0;
   width: 100%;
 
