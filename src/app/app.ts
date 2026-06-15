@@ -1,15 +1,28 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
+import { Cart } from './cart';
 
 // Configuración del componente principal
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  constructor(
+  public cartService: Cart,
+  private router: Router
+) {}
+  mostrarTienda() {
+  return window.location.pathname !== '/carrito';
+}
+goToCart() {
+  this.router.navigate(['/carrito']);
+}
 
    // Lista de productos disponibles en la tienda
   products = [
@@ -136,29 +149,41 @@ export class App {
     image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/477fa9123c55462ba2ee66499b5806c9_9366/Tenis_de_Running_Runfalcon_6_Cloudfoam_Azul_KH5565_HM1.jpg'
   }
 ];
-  // Carrito de compras
-  cart: any[] = [];
-
-  // Total acumulado de compra
-  total = 0;
-
-  // Agrega productos al carrito y actualiza el total
-  addToCart(productName: string, price: number) {
-
-    this.cart.push({
-      name: productName,
-      price: price
-    });
-
-    this.total += price;
-
-    console.log(this.cart);
+lookProducts = [
+  {
+    image:'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6998674_CAM_LAM_FTD_SS_26_MAR_25_FOOTBALL_LAM_AWAY_CO_CORRECT_ONSITE_STYLING_CAROUSEL_1080x1920_FITM_2_8ea7b35764.png',
+    items: '3 artículos'
+  },
+  {
+    image: 'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6998674_CAM_LAM_FTD_SS_26_MAR_25_FOOTBALL_LAM_AWAY_CO_CORRECT_ONSITE_STYLING_CAROUSEL_1080x1920_FITM_1_756a704d7e.png',
+    items: '2 artículos'
+  },
+  {
+    image: 'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6906349_CAM_LAM_ONSITE_FOOTBALL_IS_THE_MUSE_SS_26_PT_3_ARG_LOOBOOKS_DAT_CAROUSEL_STYLING_1080x1920_11_d_0b5dad61fa.jpg',
+    items: '3 artículos'
+  },
+  {
+    image: 'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6906349_CAM_LAM_ONSITE_FOOTBALL_IS_THE_MUSE_SS_26_PT_3_ARG_LOOBOOKS_DAT_CAROUSEL_STYLING_1080x1920_13_d_60b01dcab3.jpg',
+    items: '4 artículos'
+  }, 
+  {
+    image: 'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6906349_CAM_LAM_ONSITE_FOOTBALL_IS_THE_MUSE_SS_26_PT_3_ARG_LOOBOOKS_DAT_CAROUSEL_STYLING_1080x1920_8_d_c51d076e4b.jpg',
+    items: '5 artículos'
   }
+];
+  // Texto del buscador
+  searchText = '';
+  filteredProducts(products: any[]) {
+  return products.filter(product =>
+    product.name.toLowerCase().includes(this.searchText.toLowerCase())
+  );
+}
+  // Agrega productos al carrito y actualiza el total
+addToCart(product: any) {
+  this.cartService.addToCart(product);
+}
   // Elimina productos del carrito
   removeFromCart(index: number) {
-
-    this.total -= this.cart[index].price;
-
-    this.cart.splice(index, 1);
-  }
+  this.cartService.removeFromCart(index);
+}
 }

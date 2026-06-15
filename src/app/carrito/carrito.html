@@ -1,0 +1,104 @@
+<h1 class="cart-title">
+  Tu carrito
+</h1>
+
+<div
+  class="cart-container"
+  *ngIf="cartService.cart.length > 0"
+>
+
+  <!-- Productos -->
+  <section class="cart-products">
+
+    <div
+      class="cart-item"
+      *ngFor="let item of cartService.cart; let i = index"
+    >
+
+      <img
+        [src]="item.image"
+        [alt]="item.name"
+        class="cart-image"
+      >
+
+      <div class="cart-info">
+
+        <h3>{{ item.name }}</h3>
+
+        <p class="price">
+          ${{ item.price.toLocaleString('es-CO') }}
+        </p>
+
+        <div class="quantity-controls">
+
+  <button
+    (click)="cartService.decreaseQuantity(i)"
+  >
+    -
+  </button>
+
+  <span>
+    {{ item.quantity }}
+  </span>
+
+  <button
+    (click)="cartService.increaseQuantity(item)"
+  >
+    +
+  </button>
+
+</div>
+
+<button
+  class="delete-btn"
+  (click)="cartService.removeFromCart(i)"
+>
+  Eliminar
+</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Resumen -->
+  <aside class="cart-summary">
+
+    <h2>Resumen de compra</h2>
+
+    <p>
+      Productos:
+      <strong>
+        {{ cartService.getTotalItems() }}
+      </strong>
+    </p>
+
+    <p class="total-price">
+      Total:
+      <strong>
+        ${{ cartService.total.toLocaleString('es-CO') }}
+      </strong>
+    </p>
+
+    <button class="checkout-btn">
+      Finalizar compra
+    </button>
+
+    <button
+      class="continue-btn"
+      routerLink="/"
+    >
+      Seguir comprando
+    </button>
+
+  </aside>
+
+</div>
+
+<p
+  class="empty-cart"
+  *ngIf="cartService.cart.length === 0"
+>
+  Tu carrito está vacío 🛍️
+</p>

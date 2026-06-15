@@ -1,3 +1,4 @@
+@if (mostrarTienda()) {
 <!-- HEADER SUPERIOR NEGRO -->
 <div class="top-banner">
   ADIDAS X COPA MUNDIAL DE LA FIFA 26™
@@ -47,11 +48,11 @@
   <div class="search-container">
 
     <input
-      type="text"
-      placeholder="Buscar"
-      class="search-box"
-    />
-
+    type="text"
+    placeholder="Buscar"
+    class="search-box"
+    [(ngModel)]="searchText"
+  />
    <span class="material-icons-outlined search-icon">
     search
   </span>
@@ -78,7 +79,7 @@
     </span>
   </div>
   <!-- Carrito -->
-  <div class="cart-wrapper">
+  <div class="cart-wrapper" (click)="goToCart()">
 
     <div class="cart-icon">
       <span class="material-icons-outlined">
@@ -86,9 +87,7 @@
       </span>
     </div>
 
-    <span class="badge-cart">
-      {{ cart.length }}
-    </span>
+   {{ cartService.cart.length }}
 
   </div>
 
@@ -157,8 +156,10 @@
 <!-- Sección de productos -->
 <section class="products">
 
-  <!-- Recorre los productos dinámicamente -->
-  <div class="product-card" *ngFor="let product of products">
+  <!-- Recorre los productos dinámicamente --><div
+  class="product-card"
+  *ngFor="let product of filteredProducts(products)"
+  >
 
   <!-- Imagen -->
   <div class="product-image-container">
@@ -186,14 +187,13 @@
 
   </div>
 
-  <!--
+  
 <button
   class="add-cart-btn"
-  (click)="addToCart(product.name, product.price)"
+  (click)="addToCart(product)"
 >
-  Agregar al carrito
+  AGREGAR A LA BOLSA
 </button>
--->
 
 </div>
 
@@ -274,8 +274,7 @@
 
     <div
       class="product-card"
-      *ngFor="let product of newsProducts"
-    >
+        *ngFor="let product of filteredProducts(newsProducts)"    >
 
       <div class="product-image-container">
 
@@ -302,6 +301,12 @@
         </p>
 
       </div>
+      <button
+        class="add-cart-btn"
+        (click)="addToCart(product)"
+      >
+        AGREGAR A LA BOLSA
+      </button>
 
     </div>
 
@@ -401,51 +406,24 @@
 
   <div class="look-grid">
 
-    <div class="look-card">
+    <div
+      class="look-card"
+      *ngFor="let product of lookProducts"
+    >
       <img
-        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900"
+        [src]="product.image"
         alt=""
       />
 
       <div class="look-badge">
-        3 artículos ↗
-      </div>
-    </div>
-
-    <div class="look-card">
-      <img
-        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900"
-        alt=""
-      />
-
-      <div class="look-badge">
-        2 artículos ↗
-      </div>
-    </div>
-
-    <div class="look-card">
-      <img
-        src="https://images.unsplash.com/photo-1504593811423-6dd665756598?w=900"
-        alt=""
-      />
-
-      <div class="look-badge">
-        3 artículos ↗
-      </div>
-    </div>
-
-    <div class="look-card">
-      <img
-        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900"
-        alt=""
-      />
-
-      <div class="look-badge">
-        4 artículos ↗
+        {{ product.items }} ↗
       </div>
     </div>
 
   </div>
+
+  <!-- BARRA DE DESPLAZAMIENTO -->
+  
 
 </section>
 <section class="categories-footer">
@@ -507,7 +485,8 @@
 <section class="footer-main">
 
   <div class="footer-column">
-    <h3>PRODUCTOS</h3>
+  <h3>PRODUCTOS</h3>
+
     <a href="#">Mujer</a>
     <a href="#">Hombre</a>
     <a href="#">Calzado</a>
@@ -515,14 +494,27 @@
     <a href="#">Ropa</a>
     <a href="#">Accesorios</a>
     <a href="#">Guayos</a>
+    <a href="#">Sudaderas</a>
+
+    <a href="#">Novedades</a>
+    <a href="#">Outlet</a>
+    <a href="#">Black Friday</a>
+    <a href="#">Cyber Lunes</a>
+    <a href="#">Hot Sale</a>
+
+    <a href="#">adiClub</a>
+    <a href="#">adidas app</a>
+    <a href="#">adidas Runners</a>
   </div>
 
   <div class="footer-column">
-    <h3>DEPORTES</h3>
+  <h3>DEPORTES</h3>
+
     <a href="#">Selección Colombia</a>
     <a href="#">Millonarios</a>
     <a href="#">Fútbol</a>
     <a href="#">Running</a>
+    <a href="#">Basketball</a>
     <a href="#">Training</a>
 
     <h3 class="footer-subtitle">
@@ -532,21 +524,31 @@
     <a href="#">Ultraboost</a>
     <a href="#">Originals</a>
     <a href="#">Forum</a>
+    <a href="#">Stan Smith</a>
+    <a href="#">Adicolor</a>
+    <a href="#">Superstar</a>
   </div>
 
   <div class="footer-column">
-    <h3>ASISTENCIA</h3>
+  <h3>ASISTENCIA</h3>
+
     <a href="#">Dudas Frecuentes</a>
     <a href="#">Realizar Pedidos</a>
     <a href="#">Productos adidas</a>
     <a href="#">Ventas por Whatsapp</a>
     <a href="#">Pago</a>
     <a href="#">Envío</a>
+
+    <a href="#">Autogestionar mi Devolución</a>
     <a href="#">Devoluciones</a>
+    <a href="#">Cambio en Tiendas</a>
+    <a href="#">Como Usar Nuestro Sitio</a>
+    <a href="#">Mapa del Sitio</a>
   </div>
 
   <div class="footer-column">
-    <h3>INFORMACIÓN DE LA EMPRESA</h3>
+  <h3>INFORMACIÓN DE LA EMPRESA</h3>
+
     <a href="#">Acerca de adidas</a>
     <a href="#">Trabaja en Nuestro Equipo</a>
     <a href="#">Prensa</a>
@@ -592,41 +594,7 @@
 
   <p>2024 adidas, adidas Colombia Ltda.</p>
 </div>
-<section
-  class="cart-section"
-  *ngIf="cart.length > 0"
->
-<!-- Sección del carrito -->
 
-
-  <!-- Cantidad de productos -->
-  <h2>Carrito({{ cart.length }})</h2>
-
-  <!-- Total de la compra -->
-  <p>Total: ${{ total.toLocaleString('es-CO') }}</p>
-
-  <!-- Mensaje cuando está vacío -->
-  <p *ngIf="cart.length === 0">
-    Tu carrito está vacío
-  </p>
-
-  <!-- Lista de productos del carrito -->
-  <div
-    class="cart-item"
-    *ngFor="let item of cart; let i = index"
-  >
-    <!-- Nombre del producto -->
-    <p>{{ item.name }}</p>
-
-    <!-- Precio del producto -->
-    <p class="cart-price">
-      ${{ item.price.toLocaleString('es-CO') }}
-    </p>
-
-    <!-- Botón eliminar -->
-    <button (click)="removeFromCart(i)">
-      Eliminar
-    </button>
-  </div>
-
-</section>
+} @else {
+  <router-outlet></router-outlet>
+}

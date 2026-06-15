@@ -43,17 +43,19 @@ body {
 .top-banner {
   background: black;
   color: white;
-  text-align: center;
 
-  height: 38px;
-  line-height: 38px;
+  height: 40px;
 
-  font-size: 14px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  letter-spacing: 0.5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
-  padding: 0;
+  z-index: 1001;
 }
 .banner-arrow {
   font-size: 10px;
@@ -65,7 +67,6 @@ body {
 /* HEADER */
 .header-adidas {
   background: #fff;
-  border-bottom: 1px solid #dedede;
 
   height: 58px;
 
@@ -73,9 +74,20 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  position: relative;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+
+  z-index: 1000;
 
   padding: 0 40px;
+  box-sizing: border-box;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+body {
+  padding-top: 58px;
 }
 .logo {
   display: flex;
@@ -798,7 +810,8 @@ transform: translateY(-8px);
   font-size: 34px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  font-family: Arial Black, Arial, sans-serif;
   margin-bottom: 28px;
 }
 
@@ -806,32 +819,57 @@ transform: translateY(-8px);
   display: flex;
   gap: 10px;
 
-  width: 100%;
-
   overflow-x: auto;
   overflow-y: hidden;
 
-  padding: 16px 110px 30px 0;
+  padding-bottom: 18px;
+}
 
-  box-sizing: border-box;
+
+/* Scroll horizontal tipo Adidas */
+
+.look-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.look-grid::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  cursor: pointer;
+}
+
+.look-grid::-webkit-scrollbar-thumb {
+  background: black;
+  cursor: pointer;
+}
+
+.look-grid::-webkit-scrollbar-thumb:hover {
+  background: #111;
 }
 
 /* TARJETAS */
 
 .look-card {
   position: relative;
-  flex: 0 0 345px;
-  height: 640px;
+  flex: 0 0 380px;
+  height: 720px;
 
   overflow: hidden;
   background: #eee;
+
+  border: 1px solid transparent;
+  transition: border 0.15s ease;
+  cursor: pointer;
+}
+.look-card:hover {
+  border: 1px solid black;
 }
 .look-card img {
   width: 100%;
-  height: 100%;
+  height: 760px;
   object-fit: cover;
+  display: block;
+  cursor: pointer;
 }
-
 /* BADGE BLANCO */
 
 .look-badge {
@@ -846,16 +884,26 @@ transform: translateY(-8px);
 
 /* SCROLL */
 
+/* SCROLL */
+
 .look-grid::-webkit-scrollbar {
-  height: 4px;
+  height: 3px;
 }
 
 .look-grid::-webkit-scrollbar-track {
   background: #e5e5e5;
+
+  margin-left: 120px;
+  margin-right: 160px;
 }
 
 .look-grid::-webkit-scrollbar-thumb {
   background: black;
+  cursor: pointer;
+}
+
+.look-grid::-webkit-scrollbar-thumb:hover {
+  background: #111;
 }
 
 /* ==========================
@@ -942,12 +990,11 @@ transform: translateY(-8px);
 
   width: 100%;
   margin: 0;
-  padding: 45px 40px 80px;
+  padding: 45px 40px 80px 180px;
 
   box-sizing: border-box;
 
   display: grid;
-
   grid-template-columns: repeat(5, minmax(0, 1fr));
 
   gap: 30px;
@@ -965,7 +1012,7 @@ transform: translateY(-8px);
 
 .footer-column h3 {
   color: white;
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -1003,7 +1050,7 @@ transform: translateY(-8px);
 
 .social-icons i {
   color: white;
-  font-size: 42px;
+  font-size: 24px;
   cursor: pointer;
 }
 /* FORZAR ANCHO COMPLETO FOOTER */
@@ -1013,7 +1060,7 @@ transform: translateY(-8px);
 
 .social-icons i {
   color: white;
-  font-size: 42px;
+  font-size: 26px;
 }
 
 html,
@@ -1022,6 +1069,7 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 app-root,
