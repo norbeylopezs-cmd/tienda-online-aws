@@ -165,6 +165,10 @@ goToCart() {
 addToCart(product: any) {
   this.cartService.addToCart(product);
 }
+verDetalle(product: any) {
+  this.cartService.setSelectedProduct(product);
+  this.router.navigate(['/producto-detalle']);
+}
   // Elimina productos del carrito
   removeFromCart(index: number) {
   this.cartService.removeFromCart(index);

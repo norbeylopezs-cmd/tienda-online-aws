@@ -1,107 +1,87 @@
-@if (mostrarTienda()) {
+@if (mostrarHeader()) {
+
 <!-- HEADER SUPERIOR NEGRO -->
 <div class="top-banner">
   ADIDAS X COPA MUNDIAL DE LA FIFA 26™
   <span class="banner-arrow">▼</span>
 </div>
-<div class="top-links">
 
+<div class="top-links">
   <a href="#">buscador de tiendas</a>
   <a href="#">ayuda</a>
   <a href="#">pedidos y devoluciones</a>
   <a href="#">bonos de regalo</a>
   <a href="#">únete al club</a>
-
 </div>
+
 <!-- HEADER PRINCIPAL -->
 <header class="header-adidas">
 
-  <!-- Logo -->
- <div class="logo">
-  <img
-    src="https://cdn-icons-png.flaticon.com/512/731/731962.png"
-    alt="Adidas Logo"
-  />
-</div>
+  <div class="logo">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/731/731962.png"
+      alt="Adidas Logo"
+    />
+  </div>
 
-  <!-- Menú -->
   <nav class="nav-links">
-  <a href="/mujer">MUJER</a>
-  <a href="#">HOMBRE</a>
-  <a href="#">NIÑOS</a>
+    <a href="/mujer">MUJER</a>
+    <a href="#">HOMBRE</a>
+    <a href="#">NIÑOS</a>
+    <a href="#" class="fifa-link">COPA MUNDIAL DE LA FIFA 26™ 🏆</a>
+    <a href="#">DEPORTE</a>
+    <a href="#" class="outlet">OUTLET</a>
+  </nav>
 
-  <a href="#" class="fifa-link">
-    COPA MUNDIAL DE LA FIFA 26™ 🏆
-  </a>
+  <div class="header-right">
 
-  <a href="#">DEPORTE</a>
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Buscar"
+        class="search-box"
+        [(ngModel)]="searchText"
+      />
 
-  <a href="#" class="outlet">
-    OUTLET
-  </a>
-</nav>
-
- <!-- Parte derecha -->
-<div class="header-right">
-
-  <!-- Buscador -->
-  <div class="search-container">
-
-    <input
-    type="text"
-    placeholder="Buscar"
-    class="search-box"
-    [(ngModel)]="searchText"
-  />
-   <span class="material-icons-outlined search-icon">
-    search
-  </span>
-
-  </div>
-
-  <!-- Usuario -->
-  <div class="icon-circle">
-
-    <span class="material-icons-outlined">
-      person
-    </span>
-
-    <span class="badge-user">
-      1
-    </span>
-
-  </div>
-
-  <!-- Favoritos -->
-  <div class="icon-heart">
-    <span class="material-icons-outlined">
-      favorite_border
-    </span>
-  </div>
-  <!-- Carrito -->
-  <div class="cart-wrapper" (click)="goToCart()">
-
-    <div class="cart-icon">
-      <span class="material-icons-outlined">
-        shopping_bag
+      <span class="material-icons-outlined search-icon">
+        search
       </span>
     </div>
 
-   {{ cartService.cart.length }}
+    <div class="icon-circle">
+      <span class="material-icons-outlined">person</span>
+      <span class="badge-user">1</span>
+    </div>
+
+    <div class="icon-heart">
+      <span class="material-icons-outlined">
+        favorite_border
+      </span>
+    </div>
+
+    <div class="cart-wrapper" (click)="goToCart()">
+      <div class="cart-icon">
+        <span class="material-icons-outlined">
+          shopping_bag
+        </span>
+      </div>
+
+      {{ cartService.cart.length }}
+    </div>
 
   </div>
 
-</div>
-
 </header>
+
+}
+
+@if (mostrarTienda()) {
 
 <!-- BANNER PRINCIPAL ADIDAS -->
 
 <section class="shop-color">
 
-  <h2>
-    COMPRA POR COLOR 🎨
-  </h2>
+  <h2>COMPRA POR COLOR 🎨</h2>
 
   <div class="colors-grid">
 
@@ -128,76 +108,66 @@
   </div>
 
 </section>
+
 <section class="find-section">
 
   <div class="find-header">
-
-    <h2>
-      ENCUENTRA LO QUE BUSCAS
-    </h2>
-
-    <a href="#">
-      VER TODO
-    </a>
-
+    <h2>ENCUENTRA LO QUE BUSCAS</h2>
+    <a href="#">VER TODO</a>
   </div>
 
   <div class="categories">
-
     <button>CALZADO</button>
     <button>SHORTS</button>
     <button>PANTALONES</button>
     <button>ACCESORIOS</button>
-
   </div>
 
 </section>
 
-<!-- Sección de productos -->
+<!-- PRODUCTOS -->
 <section class="products">
 
-  <!-- Recorre los productos dinámicamente --><div
-  class="product-card"
-  *ngFor="let product of filteredProducts(products)"
+  <div
+    class="product-card"
+    *ngFor="let product of filteredProducts(products)"
   >
 
-  <!-- Imagen -->
-  <div class="product-image-container">
-    <img
-      [src]="product.image"
-      alt="{{ product.name }}"
-      class="product-image"
-    />
+    <div class="product-image-container">
+      <img
+        [src]="product.image"
+        alt="{{ product.name }}"
+        class="product-image"
+      />
+    </div>
+
+    <div class="product-info">
+
+      <p class="product-price">
+        ${{ product.price.toLocaleString('es-CO') }}
+      </p>
+
+      <h3 class="product-name">
+        {{ product.name }}
+      </h3>
+
+      <p class="product-category">
+        Hombre Originals
+      </p>
+
+    </div>
+
+    <button
+      class="add-cart-btn"
+      (click)="verDetalle(product)"
+    >
+      VER DETALLE
+    </button>
+
   </div>
-
-  <!-- Información -->
-<div class="product-info">
-
-    <p class="product-price">
-      ${{ product.price.toLocaleString('es-CO') }}
-    </p>
-
-    <h3 class="product-name">
-      {{ product.name }}
-    </h3>
-
-    <p class="product-category">
-      Hombre Originals
-    </p>
-
-  </div>
-
-  
-<button
-  class="add-cart-btn"
-  (click)="addToCart(product)"
->
-  AGREGAR A LA BOLSA
-</button>
-
-</div>
 
 </section>
+
 <section class="passion-section">
 
   <h2 class="passion-title">
@@ -216,7 +186,8 @@
 
     <div class="passion-card">
       <img
-        src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_400,w_400/running_wayfinding_d_20c467096a.png"        alt="Running"
+        src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_400,w_400/running_wayfinding_d_20c467096a.png"
+        alt="Running"
       />
       <span>Prepárate para sumar kilómetros</span>
     </div>
@@ -240,50 +211,36 @@
   </div>
 
 </section>
+
 <!-- NOVEDADES HOMBRE -->
 <section class="news-section">
 
   <div class="news-header">
 
     <div class="news-tabs">
-      <button class="active-tab">
-        NOVEDADES
-      </button>
-
-      <button>
-        TARJETAS DE REGALO
-      </button>
-
-      <button>
-        VER TODO HOMBRE
-      </button>
-
-      <button>
-        MASCOTAS
-      </button>
+      <button class="active-tab">NOVEDADES</button>
+      <button>TARJETAS DE REGALO</button>
+      <button>VER TODO HOMBRE</button>
+      <button>MASCOTAS</button>
     </div>
 
-    <a href="#">
-      VER TODO
-    </a>
+    <a href="#">VER TODO</a>
 
   </div>
 
-  <!-- Productos -->
   <div class="news-products">
 
     <div
       class="product-card"
-        *ngFor="let product of filteredProducts(newsProducts)"    >
+      *ngFor="let product of filteredProducts(newsProducts)"
+    >
 
       <div class="product-image-container">
-
         <img
           [src]="product.image"
           alt="{{ product.name }}"
           class="product-image"
         />
-
       </div>
 
       <div class="product-info">
@@ -301,11 +258,12 @@
         </p>
 
       </div>
+
       <button
         class="add-cart-btn"
-        (click)="addToCart(product)"
+        (click)="verDetalle(product)"
       >
-        AGREGAR A LA BOLSA
+        VER DETALLE
       </button>
 
     </div>
@@ -314,89 +272,53 @@
 
 </section>
 
-
-<!-- TITULO SIGUIENTE -->
 <section class="season-title">
-
-  <h2>
-    COLORES Y ESTILOS DE TEMPORADA
-  </h2>
-
+  <h2>COLORES Y ESTILOS DE TEMPORADA</h2>
 </section>
-
 
 <section class="season-cards">
 
   <div class="season-card">
-
     <img
       src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/ropa_comoda_tc_d_b6beb089f4.jpg"
       alt=""
     >
 
     <div class="season-content">
-      <h3>
-        La comodidad es una forma de vida
-      </h3>
-
-      <p>
-        Vestirse cómodo es más que una elección estética: es una declaración de libertad.
-      </p>
-
-      <a href="#">
-        Descubre combinaciones y estilos
-      </a>
+      <h3>La comodidad es una forma de vida</h3>
+      <p>Vestirse cómodo es más que una elección estética: es una declaración de libertad.</p>
+      <a href="#">Descubre combinaciones y estilos</a>
     </div>
-
   </div>
 
   <div class="season-card">
-
     <img
       src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/chunky_tc_d_8ce981caf9.jpg"
       alt=""
     >
 
     <div class="season-content">
-      <h3>
-        Calzado inspirado en el streetwear
-      </h3>
-
-      <p>
-        Robustos, cómodos y con presencia.
-      </p>
-
-      <a href="#">
-        Comprar ahora
-      </a>
+      <h3>Calzado inspirado en el streetwear</h3>
+      <p>Robustos, cómodos y con presencia.</p>
+      <a href="#">Comprar ahora</a>
     </div>
-
   </div>
 
   <div class="season-card">
-
     <img
       src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/retro_tc_d_2d93f1e8a8.jpg"
       alt=""
     >
 
     <div class="season-content">
-      <h3>
-        Lo retro solo evolucionó
-      </h3>
-
-      <p>
-        ¿Te gustan los cortes anchos, estampados y denim?
-      </p>
-
-      <a href="#">
-        Encuentra lo que necesitas
-      </a>
+      <h3>Lo retro solo evolucionó</h3>
+      <p>¿Te gustan los cortes anchos, estampados y denim?</p>
+      <a href="#">Encuentra lo que necesitas</a>
     </div>
-
   </div>
 
 </section>
+
 <!-- INSPÍRATE Y CREA TU LOOK -->
 <section class="look-section">
 
@@ -422,10 +344,8 @@
 
   </div>
 
-  <!-- BARRA DE DESPLAZAMIENTO -->
-  
-
 </section>
+
 <section class="categories-footer">
 
   <div class="categories-container">
@@ -469,6 +389,13 @@
   </div>
 
 </section>
+
+}
+
+<router-outlet></router-outlet>
+
+@if (mostrarHeader()) {
+
 <!-- FRANJA CLUB -->
 <section class="club-banner">
 
@@ -481,11 +408,12 @@
   </button>
 
 </section>
+
 <!-- FOOTER PRINCIPAL -->
 <section class="footer-main">
 
   <div class="footer-column">
-  <h3>PRODUCTOS</h3>
+    <h3>PRODUCTOS</h3>
 
     <a href="#">Mujer</a>
     <a href="#">Hombre</a>
@@ -495,20 +423,18 @@
     <a href="#">Accesorios</a>
     <a href="#">Guayos</a>
     <a href="#">Sudaderas</a>
-
     <a href="#">Novedades</a>
     <a href="#">Outlet</a>
     <a href="#">Black Friday</a>
     <a href="#">Cyber Lunes</a>
     <a href="#">Hot Sale</a>
-
     <a href="#">adiClub</a>
     <a href="#">adidas app</a>
     <a href="#">adidas Runners</a>
   </div>
 
   <div class="footer-column">
-  <h3>DEPORTES</h3>
+    <h3>DEPORTES</h3>
 
     <a href="#">Selección Colombia</a>
     <a href="#">Millonarios</a>
@@ -517,9 +443,7 @@
     <a href="#">Basketball</a>
     <a href="#">Training</a>
 
-    <h3 class="footer-subtitle">
-      COLECCIONES
-    </h3>
+    <h3 class="footer-subtitle">COLECCIONES</h3>
 
     <a href="#">Ultraboost</a>
     <a href="#">Originals</a>
@@ -530,7 +454,7 @@
   </div>
 
   <div class="footer-column">
-  <h3>ASISTENCIA</h3>
+    <h3>ASISTENCIA</h3>
 
     <a href="#">Dudas Frecuentes</a>
     <a href="#">Realizar Pedidos</a>
@@ -538,7 +462,6 @@
     <a href="#">Ventas por Whatsapp</a>
     <a href="#">Pago</a>
     <a href="#">Envío</a>
-
     <a href="#">Autogestionar mi Devolución</a>
     <a href="#">Devoluciones</a>
     <a href="#">Cambio en Tiendas</a>
@@ -547,43 +470,40 @@
   </div>
 
   <div class="footer-column">
-  <h3>INFORMACIÓN DE LA EMPRESA</h3>
+    <h3>INFORMACIÓN DE LA EMPRESA</h3>
 
     <a href="#">Acerca de adidas</a>
     <a href="#">Trabaja en Nuestro Equipo</a>
     <a href="#">Prensa</a>
 
-    <h3 class="footer-subtitle">
-      TIENDAS
-    </h3>
-
+    <h3 class="footer-subtitle">TIENDAS</h3>
     <a href="#">Buscador de Tiendas</a>
 
-    <h3 class="footer-subtitle">
-      NUESTRO MUNDO
-    </h3>
-
+    <h3 class="footer-subtitle">NUESTRO MUNDO</h3>
     <a href="#">Impacto</a>
     <a href="#">Personas</a>
     <a href="#">Planeta</a>
   </div>
 
- <div class="footer-column social-column">
+  <div class="footer-column social-column">
 
-  <h3>SÍGUENOS</h3>
+    <h3>SÍGUENOS</h3>
 
-  <div class="social-icons">
-    <i class="fab fa-facebook-f"></i>
-    <i class="fab fa-instagram"></i>
-    <i class="fab fa-x-twitter"></i>
-    <i class="fab fa-pinterest-p"></i>
-    <i class="fab fa-tiktok"></i>
-    <i class="fab fa-youtube"></i>
+    <div class="social-icons">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-x-twitter"></i>
+      <i class="fab fa-pinterest-p"></i>
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+
   </div>
 
-</div>
 </section>
+
 <div class="footer-bottom">
+
   <a href="#">Términos y Condiciones</a>
   <a href="#">Términos y Condiciones Promociones</a>
   <a href="#">Política de Privacidad</a>
@@ -593,8 +513,7 @@
   <a href="#">PQR</a>
 
   <p>2024 adidas, adidas Colombia Ltda.</p>
+
 </div>
 
-} @else {
-  <router-outlet></router-outlet>
 }

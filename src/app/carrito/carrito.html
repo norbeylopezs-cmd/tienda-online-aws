@@ -1,98 +1,291 @@
-<h1 class="cart-title">
-  Tu carrito
-</h1>
+<div class="cart-page" *ngIf="cartService.cart.length > 0">
 
-<div
-  class="cart-container"
-  *ngIf="cartService.cart.length > 0"
->
+  <main class="cart-main">
 
-  <!-- Productos -->
-  <section class="cart-products">
+    <section class="cart-products">
 
-    <div
-      class="cart-item"
-      *ngFor="let item of cartService.cart; let i = index"
-    >
+      <h1 class="cart-title">
+        TU CARRITO
+        <span>({{ cartService.getTotalItems() }} producto)</span>
+      </h1>
 
-      <img
-        [src]="item.image"
-        [alt]="item.name"
-        class="cart-image"
+      <p class="cart-note">
+        Los artículos en tu carrito no están reservados.
+        Termina el proceso de compra ahora para hacerte con ellos.
+      </p>
+
+      <div class="promo-box">
+        <strong>
+          Llévatelo hoy y paga después con BBVA y RappiCard
+        </strong>
+
+        <p>
+          Paga a 3 cuotas sin interés en compras desde $449.900
+          o 6 cuotas sin interés desde $549.900 con tu tarjeta
+          BBVA y RappiCard.
+        </p>
+      </div>
+
+      <div
+        class="cart-item"
+        *ngFor="let item of cartService.cart; let i = index"
       >
 
-      <div class="cart-info">
+        <div class="cart-image-box">
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            class="cart-image"
+          >
+        </div>
 
-        <h3>{{ item.name }}</h3>
+        <div class="cart-info">
 
-        <p class="price">
-          ${{ item.price.toLocaleString('es-CO') }}
-        </p>
+          <div class="cart-info-top">
 
-        <div class="quantity-controls">
+            <div>
+              <h3>{{ item.name }}</h3>
 
-  <button
-    (click)="cartService.decreaseQuantity(i)"
-  >
-    -
-  </button>
+              <p class="cart-color">
+                Dark Blue / Off White / Matte Gold
+              </p>
 
-  <span>
-    {{ item.quantity }}
-  </span>
+              <p class="cart-size">
+                Tamaño: US 8
+              </p>
+            </div>
 
-  <button
-    (click)="cartService.increaseQuantity(item)"
-  >
-    +
-  </button>
+            <button
+              class="icon-btn"
+              (click)="cartService.removeFromCart(i)"
+              title="Eliminar"
+            >
+              🗑️
+            </button>
 
-</div>
+          </div>
 
-<button
-  class="delete-btn"
-  (click)="cartService.removeFromCart(i)"
->
-  Eliminar
-</button>
+          <button class="favorite-btn">
+            ♡
+          </button>
+
+          <div class="cart-info-bottom">
+
+            <div class="quantity-controls">
+
+              <button
+                (click)="cartService.decreaseQuantity(i)"
+              >
+                -
+              </button>
+
+              <span>
+                {{ item.quantity }}
+              </span>
+
+              <button
+                (click)="cartService.increaseQuantity(item)"
+              >
+                +
+              </button>
+
+            </div>
+
+            <p class="price">
+              ${{ item.price.toLocaleString('es-CO') }},00
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
+      <hr class="divider">
+
+      <h2 class="recommendations-title">
+        NUESTRAS RECOMENDACIONES
+      </h2>
+
+      <div class="recommendations-grid">
+
+        <div
+          class="recommendation-card"
+          *ngFor="let product of recommendedProducts"
+        >
+
+          <div class="recommendation-image-box">
+            <img
+              [src]="product.image"
+              [alt]="product.name"
+            >
+          </div>
+
+          <p class="recommendation-price">
+            ${{ product.price.toLocaleString('es-CO') }}
+          </p>
+
+          <h3>
+            {{ product.name }}
+          </h3>
+
+          <p class="recommendation-category">
+            {{ product.category }}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- BENEFICIOS ABAJO -->
+
+      <div class="cart-benefits">
+
+        <div class="benefit-item">
+          <span class="benefit-icon">🚚</span>
+          <a href="#">
+            ENVÍO GRATIS A PARTIR DE $249.999
+          </a>
+        </div>
+
+        <div class="benefit-item">
+          <span class="benefit-icon">✓</span>
+          <a href="#">
+            ¡COMPRA AHORA! NUESTRO CARRITO NO RESERVA INVENTARIO
+          </a>
+        </div>
+
+        <div class="benefit-item">
+          <span class="benefit-icon">🎫</span>
+          <a href="#">
+            CAMBIOS GRATIS
+          </a>
+        </div>
+
+        <div class="benefit-item">
+          <span class="benefit-icon">ⓘ</span>
+          <a href="#">
+            COMPRA AHORA CON TU TARJETA DÉBITO
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <aside class="cart-summary">
+
+      <h2>RESUMEN DEL PEDIDO</h2>
+
+      <div class="summary-row">
+        <span>
+          {{ cartService.getTotalItems() }} producto
+        </span>
+
+        <span>
+          ${{ cartService.total.toLocaleString('es-CO') }},00
+        </span>
+      </div>
+
+      <div class="summary-row">
+        <span>Entrega</span>
+        <span>Gratis</span>
+      </div>
+
+      <div class="summary-total">
+        <strong>Total</strong>
+
+        <strong>
+          ${{ cartService.total.toLocaleString('es-CO') }},00
+        </strong>
+      </div>
+
+      <div class="promo-code">
+        <span>
+          Usar puntos o código promocional
+        </span>
+
+        <span>›</span>
+      </div>
+
+      <button class="checkout-btn">
+        Ir a pagar
+        <span>→</span>
+      </button>
+
+      <div class="payment-methods">
+
+        <p>
+          FORMAS DE PAGO ACEPTADAS
+        </p>
+
+        <div class="payment-icons">
+
+          <span class="pay-pse">
+            pse
+          </span>
+
+          <span class="pay-efecty">
+            <strong>$</strong>
+            <small>efecty</small>
+          </span>
+
+          <span class="pay-visa">
+            VISA
+          </span>
+
+          <span class="pay-master">
+            <i></i>
+            <b></b>
+          </span>
+
+          <span class="pay-amex">
+            AM<br>EX
+          </span>
+
+          <span class="pay-diners">
+            <strong>Diners Club</strong>
+            <small>INTERNATIONAL</small>
+          </span>
+
+          <span class="pay-adidas">
+            <em></em>
+            <em></em>
+            <em></em>
+          </span>
+
+          <span class="pay-addi">
+            Addi
+          </span>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+  <footer class="cart-footer">
+
+    <div class="cart-footer-top">
+      <span>📱 ¿Tienes alguna duda?</span>
+      <span>|</span>
+      <span>Lun a Vie: 09:00 a 21:00</span>
+      <span>Sábado: 10:00 a 18:00</span>
     </div>
 
-  </section>
+    <div class="cart-footer-links">
+      <a href="#">Aviso de privacidad</a>
+      <span>|</span>
+      <a href="#">Términos y Condiciones</a>
+      <span>|</span>
+      <a href="#">Nuestros datos</a>
+    </div>
 
-  <!-- Resumen -->
-  <aside class="cart-summary">
+    <p>© 2026 adidas Colombia LTDA</p>
 
-    <h2>Resumen de compra</h2>
-
-    <p>
-      Productos:
-      <strong>
-        {{ cartService.getTotalItems() }}
-      </strong>
-    </p>
-
-    <p class="total-price">
-      Total:
-      <strong>
-        ${{ cartService.total.toLocaleString('es-CO') }}
-      </strong>
-    </p>
-
-    <button class="checkout-btn">
-      Finalizar compra
-    </button>
-
-    <button
-      class="continue-btn"
-      routerLink="/"
-    >
-      Seguir comprando
-    </button>
-
-  </aside>
+  </footer>
 
 </div>
 

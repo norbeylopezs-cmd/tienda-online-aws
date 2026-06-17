@@ -20,6 +20,11 @@ export class App {
   mostrarTienda() {
   return window.location.pathname === '/';
 }
+mostrarHeader() {
+  return window.location.pathname === '/'
+    || window.location.pathname === '/carrito'
+    || window.location.pathname === '/producto-detalle';
+}
 goToCart() {
   this.router.navigate(['/carrito']);
 }
@@ -181,6 +186,10 @@ lookProducts = [
   // Agrega productos al carrito y actualiza el total
 addToCart(product: any) {
   this.cartService.addToCart(product);
+}
+verDetalle(product: any) {
+  this.cartService.setSelectedProduct(product);
+  this.router.navigate(['/producto-detalle']);
 }
   // Elimina productos del carrito
   removeFromCart(index: number) {

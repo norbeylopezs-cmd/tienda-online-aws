@@ -1,0 +1,373 @@
+<section class="product-detail-page" *ngIf="product">
+
+  <!-- IZQUIERDA -->
+  <div class="product-gallery">
+
+    <div class="breadcrumb">
+      <a href="#">← Atrás</a>
+      <a href="#">Inicio</a>
+      <span>/</span>
+      <a href="#">Hombre</a>
+      <span>/</span>
+      <a href="#">Calzado</a>
+    </div>
+
+    <div class="single-product-image-box">
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+      >
+    </div>
+
+    <div class="product-extra-info">
+
+      <div class="product-highlights">
+
+        <div class="highlight-item">
+          <span class="highlight-icon">🏃</span>
+
+          <div>
+            <p>Lo mejor para</p>
+            <h3>CORRER EN ASFALTO</h3>
+          </div>
+        </div>
+
+        <div class="highlight-item">
+          <span class="highlight-icon">♙</span>
+
+          <div>
+            <p>Tipo de pronación</p>
+            <h3>NEUTRA</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="product-accordions">
+
+        <div class="accordion-row">
+          <strong>Valoraciones (50)</strong>
+          <span>★ ★ ★ ★ ☆ ˅</span>
+        </div>
+
+        <div class="accordion-row">
+          <strong>Talla y ajuste</strong>
+          <span>˅</span>
+        </div>
+
+        <div class="accordion-row">
+          <strong>Descripción</strong>
+          <span>˅</span>
+        </div>
+
+        <div class="accordion-row">
+          <strong>Detalles</strong>
+          <span>˅</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DERECHA -->
+  <aside class="product-info-panel">
+
+    <div class="product-top-row">
+
+      <p class="product-category">
+        Hombre • Running
+      </p>
+
+      <p class="rating">
+        4.6 ★★★★★ (50)
+      </p>
+
+    </div>
+
+    <div class="product-tags">
+      <span>Nuevo</span>
+      <span>Envío Gratis</span>
+    </div>
+
+    <h1>
+      {{ product.name }}
+    </h1>
+
+    <p class="product-price">
+      ${{ product.price.toLocaleString('es-CO') }}
+    </p>
+
+    <p class="installments">
+      Hasta 12 x
+      <strong>
+        ${{ (product.price / 12).toLocaleString('es-CO') }}
+      </strong>
+      más interés bancario del Banco emisor de la tarjeta.
+    </p>
+
+    <a href="#" class="see-more">
+      Ver más
+    </a>
+
+    <div class="trend-box">
+      <strong>¡Tendencia!</strong>
+      Este artículo tiene una alta demanda en este momento.
+    </div>
+
+    <h3 class="section-label">
+      Colores
+    </h3>
+
+    <div class="color-options">
+
+      <div class="color-option active">
+        <img
+          [src]="product.image"
+          [alt]="product.name"
+        >
+      </div>
+
+    </div>
+
+    <p class="color-name">
+      Dark Blue / Off White / Matte Gold
+    </p>
+
+    <h3 class="section-label">
+      Tallas
+    </h3>
+
+    <div class="size-grid">
+
+      <button
+        [class.selected]="selectedSize === 'US 6.5'"
+        (click)="selectSize('US 6.5')"
+      >
+        US 6.5
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 7'"
+        (click)="selectSize('US 7')"
+      >
+        US 7
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 7.5'"
+        (click)="selectSize('US 7.5')"
+      >
+        US 7.5
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 8'"
+        (click)="selectSize('US 8')"
+      >
+        US 8
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 8.5'"
+        (click)="selectSize('US 8.5')"
+      >
+        US 8.5
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 9'"
+        (click)="selectSize('US 9')"
+      >
+        US 9
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 9.5'"
+        (click)="selectSize('US 9.5')"
+      >
+        US 9.5
+      </button>
+
+      <button
+        [class.selected]="selectedSize === 'US 10'"
+        (click)="selectSize('US 10')"
+      >
+        US 10
+      </button>
+
+    </div>
+
+    <a href="#" class="size-guide">
+      Guía de tallas
+    </a>
+
+    <div class="fit-box">
+      ⓘ <strong>Talla real.</strong>
+      Te recomendamos pedir tu talla habitual.
+    </div>
+
+    <div class="action-row">
+
+      <button
+        class="add-detail-btn"
+        (click)="agregarAlCarrito()"
+      >
+        Añadir al carrito
+        <span>🛍️</span>
+      </button>
+
+      <button class="favorite-detail-btn">
+        ♡
+      </button>
+
+    </div>
+
+    <div class="delivery-link">
+      <span>◷</span>
+
+      <a href="#">
+        Obtener fechas de entrega
+      </a>
+    </div>
+
+    <div class="adiclub-box">
+
+      <div class="adiclub-header">
+        <strong>
+          Exclusivo para adiClub
+        </strong>
+
+        <span>
+          adiclub
+        </span>
+      </div>
+
+      <p>
+        ☼ 960 puntos adiClub
+      </p>
+
+    </div>
+
+    <div class="product-benefits">
+
+      <div class="product-benefit-item">
+        <span>🚚</span>
+        <p>
+          ENVÍO GRATIS A PARTIR DE $249.999
+        </p>
+        <strong>›</strong>
+      </div>
+
+      <div class="product-benefit-item">
+        <span>▣</span>
+        <p>
+          PAGA SEGURO PUEDES PAGAR EN LÍNEA
+        </p>
+        <strong>›</strong>
+      </div>
+
+      <div class="product-benefit-item">
+        <span>▤</span>
+        <p>
+          DEVOLUCIONES GRATIS ¿NO ES TU TALLA?
+          DEVUELVE EN UN PLAZO DE 60 DÍAS
+        </p>
+        <strong>›</strong>
+      </div>
+
+    </div>
+
+  </aside>
+
+</section>
+
+<!-- COMPLETA TU LOOK -->
+
+<section class="complete-look-section">
+
+  <h2>
+    COMPLETA TU LOOK
+  </h2>
+
+  <div class="complete-look-grid">
+
+    <div
+      class="look-card"
+      *ngFor="let item of completeLookProducts"
+    >
+
+      <div class="look-image-box">
+
+        <img
+          [src]="item.image"
+          [alt]="item.name"
+        >
+
+        <button class="heart-btn">
+          ♡
+        </button>
+
+      </div>
+
+      <p class="look-price">
+        ${{ item.price.toLocaleString('es-CO') }}
+      </p>
+
+      <h3 class="look-name">
+        {{ item.name }}
+      </h3>
+
+      <p class="look-category">
+        {{ item.category }}
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="related-products-section">
+
+  <h2>
+    QUIZÁ TAMBIÉN TE GUSTE...
+  </h2>
+
+  <div class="related-products-grid">
+
+    <div
+      class="related-card"
+      *ngFor="let item of relatedProducts"
+    >
+
+      <div class="related-image-box">
+
+        <img
+          [src]="item.image"
+          [alt]="item.name"
+        >
+
+        <button class="heart-btn">
+          ♡
+        </button>
+
+      </div>
+
+      <p class="related-price">
+        ${{ item.price.toLocaleString('es-CO') }}
+      </p>
+
+      <h3 class="related-name">
+        {{ item.name }}
+      </h3>
+
+      <p class="related-category">
+        {{ item.category }}
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
