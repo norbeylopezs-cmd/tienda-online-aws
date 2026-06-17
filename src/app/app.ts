@@ -195,4 +195,9 @@ verDetalle(product: any) {
   removeFromCart(index: number) {
   this.cartService.removeFromCart(index);
 }
+mostrarFooterCompleto() {
+  return window.location.pathname === '/'
+    || window.location.pathname === '/producto-detalle'
+    
+}
 }
