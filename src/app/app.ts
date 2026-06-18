@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { Cart } from './cart';
+import { ProductService } from './services/product.service';
+import { Product } from './interfaces/product';
 
 // Configuración del componente principal
 @Component({
@@ -15,7 +17,8 @@ import { Cart } from './cart';
 export class App {
   constructor(
   public cartService: Cart,
-  private router: Router
+  private router: Router,
+  private productService: ProductService
 ) {}
   mostrarTienda() {
   return window.location.pathname === '/';

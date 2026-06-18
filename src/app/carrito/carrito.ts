@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Cart } from '../cart';
 
 @Component({
@@ -11,7 +12,22 @@ import { Cart } from '../cart';
 })
 export class Carrito {
 
-  constructor(public cartService: Cart) {}
+  mostrarModalCompra = false;
+
+  constructor(
+    public cartService: Cart,
+    private router: Router
+  ) {}
+
+  pagar() {
+    this.mostrarModalCompra = true;
+  }
+
+  finalizarCompra() {
+    this.cartService.cart = [];
+    this.mostrarModalCompra = false;
+    this.router.navigate(['/']);
+  }
 
   recommendedProducts = [
     {
@@ -39,5 +55,4 @@ export class Carrito {
       image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/4a6f747cb10b4ca0a64295c0947c6940_9366/Tenis_Runvista_Blanco_JR4615_00_plp_standard.jpg'
     }
   ];
-
 }

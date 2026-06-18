@@ -208,9 +208,11 @@
         <span>›</span>
       </div>
 
-      <button class="checkout-btn">
-        Ir a pagar
-        <span>→</span>
+      <button
+        class="checkout-btn"
+        (click)="pagar()"
+        >
+          Ir a pagar <span>→</span>
       </button>
 
       <div class="payment-methods">
@@ -286,6 +288,41 @@
     <p>© 2026 adidas Colombia LTDA</p>
 
   </footer>
+
+  <!-- Modal de compra exitosa -->
+@if (mostrarModalCompra) {
+
+<div class="modal-overlay">
+
+  <div class="modal-compra">
+
+    <div class="check-icon">
+      ✓
+    </div>
+
+    <h2>¡Compra realizada con éxito!</h2>
+
+    <p>
+      Gracias por comprar en <strong>Adidas Colombia</strong>.
+    </p>
+
+    <p>
+      Tu pedido fue registrado correctamente.
+    </p>
+
+    <button
+      class="btn-modal"
+      (click)="finalizarCompra()">
+
+      Aceptar
+
+    </button>
+
+  </div>
+
+</div>
+
+}
 
 </div>
 
