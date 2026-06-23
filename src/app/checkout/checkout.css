@@ -459,3 +459,31 @@
   margin: 0;
   font-size: 16px;
 }
+.checkout-success {
+  margin-top: 20px;
+  padding: 16px;
+  border: 2px solid #2e7d32;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 8px;
+}
+
+.checkout-success h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.checkout-success p {
+  margin: 0;
+  font-size: 15px;
+}
+.checkout-processing {
+  margin-top: 20px;
+  font-weight: 700;
+  color: #000;
+}
+.pay-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

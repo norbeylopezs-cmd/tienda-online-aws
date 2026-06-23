@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Cart } from '../cart';
+import { CheckoutApi } from '../services/checkout-api';
 
 @Component({
   selector: 'app-checkout',
@@ -20,13 +21,20 @@ export class Checkout {
 
   mensajeError = '';
   compraExitosa = false;
+  procesandoCompra = false;
 
   constructor(
-  public cartService: Cart
+  public cartService: Cart,
+  private checkoutApi: CheckoutApi
 ) {}
   pagar() {
     this.mensajeError = '';
     this.compraExitosa = false;
+    this.procesandoCompra = false;
+    
+
+
+    
 
     if (
       !this.email ||
@@ -39,9 +47,26 @@ export class Checkout {
       return;
     }
 
-    
+      this.procesandoCompra = false;
+      this.compraExitosa = true;
 
-    this.compraExitosa = true;
+      const pedido = {
+      email: this.email,
+      nombre: this.nombre,
+      apellido: this.apellido,
+      tipoDocumento: this.tipoDocumento,
+      numeroDocumento: this.numeroDocumento,
+      total: this.cartService.total,
+      productos: this.cartService.cart
+    };
+
+    this.checkoutApi.guardarPedido(pedido).subscribe({
+      next: () => {},
+
+      error: (error) => {
+        console.error('ERROR AWS:', error);
+      }
+    });
   }
 
 }

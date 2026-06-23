@@ -132,24 +132,23 @@
 <button
   class="pay-btn"
   (click)="pagar()"
+  [disabled]="procesandoCompra"
 >
   PAGAR <span>→</span>
 </button>
+<div class="checkout-processing" *ngIf="procesandoCompra">
+  Procesando compra...
+</div>
+
+<div class="checkout-success" *ngIf="compraExitosa">
+  <h3>¡Compra realizada con éxito!</h3>
+  <p>Tu pedido fue registrado correctamente.</p>
+</div>
+
 <p class="checkout-error" *ngIf="mensajeError">
   {{ mensajeError }}
 </p>
 
-<div class="checkout-success" *ngIf="compraExitosa">
-
-  <h3>
-    ¡Compra realizada con éxito!
-  </h3>
-
-  <p>
-    Tu información fue registrada correctamente.
-  </p>
-
-</div>
     </section>
 
     <aside class="checkout-summary">
