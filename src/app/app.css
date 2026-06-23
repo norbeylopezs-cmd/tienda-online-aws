@@ -1128,3 +1128,177 @@ app-hombre {
   object-position: center;
   transform: scale(1);
 }
+/* Botón lateral de comentarios */
+.comments-tab {
+  position: fixed;
+  right: 0;
+  top: 58%;
+  transform: translateY(-50%) rotate(180deg);
+
+  width: 48px;
+  height: 170px;
+
+  background: #f3f3f3;
+  border: 1px solid #d0d0d0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #4b4b4b;
+
+  z-index: 9999;
+  cursor: pointer;
+}
+.comments-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 10000;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.comments-panel {
+  width: 410px;
+  height: 100vh;
+  background: white;
+  box-shadow: -1px 0 4px rgba(0, 0, 0, 0.08);
+  position: relative;
+  padding: 42px 34px;
+  pointer-events: auto;
+}
+
+.close-comments {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.comments-content {
+  padding-top: 20px;
+}
+
+.comments-logo {
+  width: 92px;
+  margin-bottom: 26px;
+}
+
+
+.comments-content h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 34px;
+}
+
+
+.comments-help {
+  display: inline-block;
+  color: #222;
+  font-size: 18px;
+  text-decoration: underline;
+  margin-bottom: 28px;
+}
+
+.comments-text,
+.comments-question {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  line-height: 1.28;
+  color: #222;
+  margin: 0 0 22px;
+}
+
+.comments-question span {
+  color: red;
+}
+
+.comments-scale-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.comments-rating {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 42px;
+}
+
+.comments-rating button {
+  border: 2px solid #111;
+  background: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.comments-next {
+  background: #111;
+  color: white;
+  border: none;
+  padding: 17px 30px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+/* ==========================
+   FLECHAS DEL CARRUSEL DE PRODUCTOS
+========================== */
+
+.products-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+
+  width: 54px;
+  height: 54px;
+
+  background: white;
+  border: 1px solid black;
+  color: black;
+
+  font-size: 28px;
+  font-weight: 300;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 50;
+  cursor: pointer;
+}
+
+.carousel-arrow.left {
+  left: 28px;
+}
+
+.carousel-arrow.right {
+  right: 60px;
+}

@@ -20,9 +20,8 @@ export class Carrito {
   ) {}
 
   pagar() {
-    this.mostrarModalCompra = true;
-  }
-
+  this.router.navigate(['/checkout']);
+}
   finalizarCompra() {
     this.cartService.cart = [];
     this.mostrarModalCompra = false;

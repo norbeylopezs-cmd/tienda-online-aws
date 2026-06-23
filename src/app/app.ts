@@ -1,12 +1,16 @@
+// ===============================
+// IMPORTACIÓN DE LIBRERÍAS Y SERVICIOS
+// ===============================
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { Cart } from './cart';
-import { ProductService } from './services/product.service';
-import { Product } from './interfaces/product';
+import { ProductService } from './services/product.service';import { Product } from './interfaces/product';
 
-// Configuración del componente principal
+// ===============================
+// CONFIGURACIÓN DEL COMPONENTE PRINCIPAL
+// ===============================
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,14 +19,30 @@ import { Product } from './interfaces/product';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
+
+  // ===============================
+  // INYECCIÓN DE DEPENDENCIAS
+  // ===============================
   constructor(
   public cartService: Cart,
   private router: Router,
   private productService: ProductService
 ) {}
+
+  // ===============================
+  // VERIFICA SI EL USUARIO ESTÁ EN LA PÁGINA PRINCIPAL
+  // ===============================
   mostrarTienda() {
   return window.location.pathname === '/';
 }
+
+  // ===============================
+  // CARGA INICIAL DEL COMPONENTE
+  // - Consulta productos almacenados en localStorage.
+  // - Consume la API de AWS.
+  // - Filtra los productos de Hombre.
+  // - Actualiza el almacenamiento local.
+  // ===============================
 ngOnInit() {
   const productosGuardados = localStorage.getItem('productosHombre');
 
@@ -65,18 +85,38 @@ ngOnInit() {
     }
   });
 }
+
+  // ===============================
+  // CONTROL DEL HEADER Y NAVEGACIÓN
+  // ===============================
 mostrarHeader() {
   return window.location.pathname === '/'
     || window.location.pathname === '/carrito'
     || window.location.pathname === '/producto-detalle';
 }
+
 goToCart() {
   this.router.navigate(['/carrito']);
 }
 
+  // ===============================
+  // VARIABLES DEL COMPONENTE
+  // ===============================
+
    // Lista de productos disponibles en la tienda
   products: any[] = [];
   newsProducts: any[] = [];
+  mostrarComentarios = false;
+
+abrirComentarios() {
+  this.mostrarComentarios = true;
+}
+
+cerrarComentarios() {
+  this.mostrarComentarios = false;
+}
+
+  // Productos utilizados para la sección de inspiración (Lookbook)
 lookProducts = [
   {
     image:'https://brand.assets.adidas.com/image/upload/c_fill,f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920,ar_9:16/6998674_CAM_LAM_FTD_SS_26_MAR_25_FOOTBALL_LAM_AWAY_CO_CORRECT_ONSITE_STYLING_CAROUSEL_1080x1920_FITM_2_8ea7b35764.png',
@@ -99,28 +139,51 @@ lookProducts = [
     items: '5 artículos'
   }
 ];
+
+  // ===============================
+  // BUSCADOR DE PRODUCTOS
+  // ===============================
+
   // Texto del buscador
   searchText = '';
+
   filteredProducts(products: any[]) {
   return products.filter(product =>
     product.name.toLowerCase().includes(this.searchText.toLowerCase())
   );
 }
+
+  // ===============================
+  // FUNCIONES DEL CARRITO
+  // ===============================
+
   // Agrega productos al carrito y actualiza el total
 addToCart(product: any) {
   this.cartService.addToCart(product);
 }
+
 verDetalle(product: any) {
   this.cartService.setSelectedProduct(product);
   this.router.navigate(['/producto-detalle']);
 }
+
   // Elimina productos del carrito
   removeFromCart(index: number) {
   this.cartService.removeFromCart(index);
 }
+
+  // ===============================
+  // CONTROL DE VISIBILIDAD DEL FOOTER
+  // ===============================
 mostrarFooterCompleto() {
   return window.location.pathname === '/'
     || window.location.pathname === '/producto-detalle'
     
+}
+scrollProductos(contenedor: HTMLElement, cantidad: number) {
+  contenedor.scrollBy({
+    left: cantidad,
+    behavior: 'smooth'
+  });
 }
 }

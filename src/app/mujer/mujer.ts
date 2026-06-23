@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Cart } from '../cart';
-import { ProductService } from '../services/product.service';
-import { Product } from '../interfaces/product';
+import { ProductService } from '../services/product.service';import { Product } from '../interfaces/product';
 
 // Configuración del componente principal
 @Component({
@@ -95,5 +94,11 @@ verDetalle(product: any) {
   // Elimina productos del carrito
   removeFromCart(index: number) {
   this.cartService.removeFromCart(index);
+}
+scrollProductos(contenedor: HTMLElement, cantidad: number) {
+  contenedor.scrollBy({
+    left: cantidad,
+    behavior: 'smooth'
+  });
 }
 }

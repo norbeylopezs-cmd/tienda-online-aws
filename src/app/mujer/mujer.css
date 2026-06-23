@@ -1128,3 +1128,36 @@ app-hombre {
   object-position: center;
   transform: scale(1);
 }
+.products-carousel {
+  position: relative;
+}
+
+.products {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  background: white;
+  border: 1px solid #111;
+  font-size: 28px;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.carousel-arrow.left {
+  left: 28px;
+}
+
+.carousel-arrow.right {
+  right: 28px;
+}
+.news-products {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}

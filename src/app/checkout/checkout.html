@@ -1,0 +1,216 @@
+<div class="checkout-page">
+
+  <header class="checkout-header">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/731/731962.png"
+      alt="Adidas"
+      class="checkout-logo"
+    >
+
+    <div class="checkout-cart-icon">
+      🛍️
+      <span>{{ cartService.getTotalItems() }}</span>
+    </div>
+  </header>
+
+  <main class="checkout-main">
+
+    <section class="checkout-form-section">
+
+      <h1>PAGAR</h1>
+
+      <p class="checkout-subtitle">
+        ({{ cartService.getTotalItems() }} producto)
+        ${{ cartService.total.toLocaleString('es-CO') }},00
+      </p>
+
+      <h2>CONTACTO</h2>
+
+      <input
+        type="email"
+        placeholder="Correo electrónico *"
+        class="checkout-input"
+        [(ngModel)]="email"
+        >
+
+      <hr>
+<h2 class="disabled-title">DIRECCIÓN</h2>
+
+<div class="checkout-fields">
+
+  <input
+    type="text"
+    placeholder="Nombre *"
+    class="checkout-input"
+    [(ngModel)]="nombre"
+    >
+  <input
+    type="text"
+    placeholder="Apellido *"
+    class="checkout-input"
+    [(ngModel)]="apellido"
+    >
+<select
+    class="checkout-input"
+    [(ngModel)]="tipoDocumento"
+    >   
+    <option value="">Tipo de documento *</option>
+    <option value="CC">Cédula de ciudadanía</option>
+    <option value="CE">Cédula de extranjería</option>
+    <option value="TI">Tarjeta de identidad</option>
+    <option value="PASAPORTE">Pasaporte</option>
+  </select>
+
+  <input
+    type="text"
+    placeholder="Número de documento *"
+    class="checkout-input"
+    [(ngModel)]="numeroDocumento"
+    >
+
+</div>
+
+<hr>
+
+<h2 class="disabled-title">OPCIONES DE ENTREGA</h2>
+
+
+
+<hr>
+
+<h2 class="disabled-title">PAGO</h2>
+
+<div class="payment-methods">
+
+  <p>
+    FORMAS DE PAGO ACEPTADAS
+  </p>
+
+  <div class="payment-icons">
+
+    <span class="pay-pse">
+      pse
+    </span>
+
+    <span class="pay-efecty">
+      <strong>$</strong>
+      <small>efecty</small>
+    </span>
+
+    <span class="pay-visa">
+      VISA
+    </span>
+
+    <span class="pay-master">
+      <i></i>
+      <b></b>
+    </span>
+
+    <span class="pay-amex">
+      AM<br>EX
+    </span>
+
+    <span class="pay-diners">
+      <strong>Diners Club</strong>
+      <small>INTERNATIONAL</small>
+    </span>
+
+    <span class="pay-adidas">
+      <em></em>
+      <em></em>
+      <em></em>
+    </span>
+
+    <span class="pay-addi">
+      Addi
+    </span>
+
+  </div>
+
+</div>
+
+<button
+  class="pay-btn"
+  (click)="pagar()"
+>
+  PAGAR <span>→</span>
+</button>
+<p class="checkout-error" *ngIf="mensajeError">
+  {{ mensajeError }}
+</p>
+
+<div class="checkout-success" *ngIf="compraExitosa">
+
+  <h3>
+    ¡Compra realizada con éxito!
+  </h3>
+
+  <p>
+    Tu información fue registrada correctamente.
+  </p>
+
+</div>
+    </section>
+
+    <aside class="checkout-summary">
+
+      <h2>TU PEDIDO</h2>
+
+      <div class="summary-row">
+        <span>{{ cartService.getTotalItems() }} producto</span>
+        <span>${{ cartService.total.toLocaleString('es-CO') }},00</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Entrega</span>
+        <span>Gratis</span>
+      </div>
+
+      <div class="summary-total">
+        <strong>Total</strong>
+        <strong>${{ cartService.total.toLocaleString('es-CO') }},00</strong>
+      </div>
+
+      <div class="promo-code">
+        <span>Usar puntos o código promocional</span>
+        <span>›</span>
+      </div>
+
+      <div
+        class="checkout-product"
+        *ngFor="let item of cartService.cart"
+      >
+        <img [src]="item.image" [alt]="item.name">
+
+        <div>
+          <h3>{{ item.name }}</h3>
+          <p>${{ item.price.toLocaleString('es-CO') }}</p>
+          <p>Tamaño: US 8 / Cantidad: {{ item.quantity }}</p>
+          <p>Color: Dark Blue / Off White / Matte Gold</p>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+   <footer class="cart-footer">
+
+    <div class="cart-footer-top">
+      <span>📱 ¿Tienes alguna duda?</span>
+      <span>|</span>
+      <span>Lun a Vie: 09:00 a 21:00</span>
+      <span>Sábado: 10:00 a 18:00</span>
+    </div>
+
+    <div class="cart-footer-links">
+      <a href="#">Aviso de privacidad</a>
+      <span>|</span>
+      <a href="#">Términos y Condiciones</a>
+      <span>|</span>
+      <a href="#">Nuestros datos</a>
+    </div>
+
+    <p>© 2026 adidas Colombia LTDA</p>
+
+  </footer>
+</div>

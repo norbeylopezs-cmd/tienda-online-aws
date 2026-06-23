@@ -1,0 +1,461 @@
+/* Página */
+
+.checkout-page {
+  background: #ffffff;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+
+.checkout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 90px;
+}
+
+.checkout-logo {
+  width: 55px;
+}
+
+.checkout-cart-icon {
+  position: relative;
+  font-size: 28px;
+}
+
+.checkout-cart-icon span {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  background: #3f8f68;
+  color: white;
+
+  font-size: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido */
+
+.checkout-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 90px;
+
+  padding: 20px 90px 70px;
+}
+
+/* Columna izquierda */
+
+.checkout-form-section {
+  flex: 2;
+}
+
+.checkout-form-section h1 {
+  text-align: center;
+
+  font-size: 41px;
+  font-weight: 900;
+
+  margin-bottom: 5px;
+
+  letter-spacing: 3px;
+}
+
+.checkout-subtitle {
+  text-align: center;
+
+  color: #666;
+
+  margin-bottom: 70px;
+
+  font-size: 18px;
+}
+
+.checkout-form-section h2 {
+  margin-top: 45px;
+  margin-bottom: 25px;
+
+  font-size: 34px;
+  font-weight: 900;
+
+  letter-spacing: 3px;
+}
+
+.disabled-title {
+  color: #8f8f8f;
+}
+
+.checkout-input {
+  width: 420px;
+
+  height: 56px;
+
+  padding: 0 18px;
+
+  font-size: 18px;
+
+  border: 1px solid #999;
+
+  outline: none;
+}
+
+.checkout-input:focus {
+  border: 2px solid black;
+}
+
+.checkout-form-section hr {
+  margin: 45px 0;
+
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Columna derecha */
+
+.checkout-summary {
+  width: 430px;
+}
+
+.checkout-summary h2 {
+  font-size: 34px;
+  font-weight: 900;
+
+  margin-bottom: 35px;
+
+  letter-spacing: 3px;
+}
+
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+
+  font-size: 16px;
+}
+
+.summary-total {
+  font-weight: bold;
+
+  margin-top: 35px;
+}
+
+.promo-code {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 24px 0;
+
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
+  margin: 50px 0;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.checkout-product {
+  display: flex;
+
+  gap: 20px;
+
+  align-items: flex-start;
+}
+
+.checkout-product img {
+  width: 170px;
+
+  background: #f5f5f5;
+}
+
+.checkout-product h3 {
+  margin: 0 0 10px;
+
+  font-size: 22px;
+}
+
+.checkout-product p {
+  margin: 6px 0;
+
+  color: #666;
+
+  font-size: 17px;
+}
+/* ==========================
+   FOOTER ADIDAS
+========================== */
+
+.cart-footer {
+  background: #2f2f2f;
+  color: white;
+  margin-top: 80px;
+  width: 100%;
+  padding: 18px 20px 12px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cart-footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-size: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.cart-footer-top span {
+  color: #ffffff;
+}
+
+.cart-footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.cart-footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.cart-footer-links a:hover {
+  text-decoration: underline;
+}
+
+.cart-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: #d6d6d6;
+}
+.payment-methods {
+  margin-top: 45px;
+}
+
+.payment-methods p {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  min-width: 390px;
+}
+
+.payment-icons span {
+  width: 42px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 9px;
+  overflow: hidden;
+}
+
+/* PSE */
+.pay-pse {
+  width: 34px !important;
+  height: 34px !important;
+  background: #0b4f8a;
+  color: white;
+  border-radius: 50%;
+  font-style: italic;
+  font-size: 11px !important;
+}
+
+/* EFECTY */
+.pay-efecty {
+  background: #ffd400;
+  color: black;
+  flex-direction: column;
+  line-height: 10px;
+}
+
+.pay-efecty strong {
+  font-size: 14px;
+  line-height: 12px;
+}
+
+.pay-efecty small {
+  font-size: 8px;
+  font-weight: 900;
+}
+
+/* VISA */
+.pay-visa {
+  color: #1434cb;
+  font-size: 17px !important;
+  font-style: italic;
+  letter-spacing: -1px;
+}
+
+/* MASTERCARD */
+.pay-master {
+  position: relative;
+  width: 44px !important;
+  height: 28px !important;
+}
+
+.pay-master i,
+.pay-master b {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  top: 1px;
+}
+
+.pay-master i {
+  left: 5px;
+  background: #eb001b;
+}
+
+.pay-master b {
+  right: 5px;
+  background: #f79e1b;
+  opacity: 0.9;
+}
+
+/* AMEX */
+.pay-amex {
+  background: #2e77bb;
+  color: white;
+  line-height: 10px;
+  font-size: 10px !important;
+}
+
+/* DINERS */
+.pay-diners {
+  width: 52px !important;
+  height: 28px !important;
+  border: 1px solid #bdbdbd;
+  color: #1d4f91;
+  flex-direction: column;
+  background: white;
+  line-height: 8px;
+}
+
+.pay-diners strong {
+  font-size: 6px;
+}
+
+.pay-diners small {
+  font-size: 4px;
+}
+
+/* ADIDAS */
+.pay-adidas {
+  width: 44px !important;
+  height: 28px !important;
+  background: black;
+  gap: 2px;
+}
+
+.pay-adidas em {
+  width: 6px;
+  height: 16px;
+  background: white;
+  display: block;
+  transform: rotate(-28deg);
+}
+
+.pay-adidas em:nth-child(1) {
+  height: 9px;
+  margin-top: 7px;
+}
+
+.pay-adidas em:nth-child(2) {
+  height: 13px;
+  margin-top: 3px;
+}
+
+.pay-adidas em:nth-child(3) {
+  height: 17px;
+}
+
+/* ADDI */
+.pay-addi {
+  width: 45px !important;
+  height: 28px !important;
+  background: #4169e1;
+  color: white;
+  font-size: 10px !important;
+}
+.pay-btn {
+  width: 320px;
+  height: 52px;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 22px;
+
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  transition: .2s;
+}
+
+.pay-btn:hover {
+  background: #2b2b2b;
+}
+.checkout-error {
+  margin-top: 18px;
+  color: #c40000;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.checkout-success {
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid #000;
+  box-shadow: 5px 5px 0 #000;
+  max-width: 420px;
+  background: #fff;
+}
+
+.checkout-success h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.checkout-success p {
+  margin: 0;
+  font-size: 16px;
+}

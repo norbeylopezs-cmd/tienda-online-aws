@@ -155,10 +155,13 @@
   </div>
 
 </section>
-
+<div class="products-carousel">
+  <button class="carousel-arrow left" (click)="scrollProductos(productosScroll, -380)">
+    ←
+  </button>
 
 <!-- Sección de productos -->
-<section class="products">
+<section class="products" #productosScroll>
 
   <!-- Recorre los productos dinámicamente --><div
   class="product-card"
@@ -202,6 +205,10 @@
 </div>
 
 </section>
+  <button class="carousel-arrow right" (click)="scrollProductos(productosScroll, 380)">
+    →
+  </button>
+</div>
 <section class="passion-section">
 
   <h2 class="passion-title">
@@ -268,9 +275,12 @@
     </a>
 
   </div>
-
+<div class="products-carousel">
+  <button class="carousel-arrow left" (click)="scrollProductos(newsScroll, -380)">
+    ←
+  </button>
   <!-- Productos -->
-  <div class="news-products">
+  <div class="news-products" #newsScroll>
 
     <div
       class="product-card"
@@ -311,6 +321,10 @@
     </div>
 
   </div>
+    <button class="carousel-arrow right" (click)="scrollProductos(newsScroll, 380)">
+    →
+  </button>
+</div>
 
 </section>
 

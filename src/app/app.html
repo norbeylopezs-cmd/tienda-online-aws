@@ -1,3 +1,10 @@
+
+<!-- ===============================
+     HEADER PRINCIPAL
+     Se muestra cuando mostrarHeader() retorna true.
+     Incluye barra superior, enlaces, menú, buscador, usuario,
+     favoritos y acceso al carrito.
+================================ -->
 @if (mostrarHeader()) {
 
 <!-- HEADER SUPERIOR NEGRO -->
@@ -77,6 +84,11 @@
 
 @if (mostrarTienda()) {
 
+  <!-- ===============================
+     SECCIÓN "COMPRA POR COLOR"
+     Muestra diferentes colores para facilitar
+     la búsqueda de productos.
+================================ -->
 <!-- BANNER PRINCIPAL ADIDAS -->
 
 <section class="shop-color">
@@ -108,7 +120,11 @@
   </div>
 
 </section>
-
+<!-- ===============================
+     SECCIÓN "ENCUENTRA LO QUE BUSCAS"
+     Permite acceder rápidamente a las principales
+     categorías de productos.
+================================ -->
 <section class="find-section">
 
   <div class="find-header">
@@ -124,9 +140,19 @@
   </div>
 
 </section>
-
+<!-- ===============================
+     CATÁLOGO PRINCIPAL DE PRODUCTOS
+     Recorre dinámicamente el arreglo "products"
+     y muestra cada producto utilizando *ngFor.
+================================ -->
 <!-- PRODUCTOS -->
-<section class="products">
+ <div class="products-carousel">
+  <button
+    class="carousel-arrow left"
+    (click)="scrollProductos(productosScroll, -380)">
+    ←
+  </button>
+<section class="products" #productosScroll>
 
   <div
     class="product-card"
@@ -165,9 +191,20 @@
     </button>
 
   </div>
-
+  
 </section>
+<button
+  class="carousel-arrow right"
+  (click)="scrollProductos(productosScroll, 380)">
+  →
+</button>
 
+</div>
+<!-- ===============================
+     SECCIÓN "ENCUENTRA TU PASIÓN"
+     Presenta diferentes categorías deportivas
+     mediante tarjetas informativas.
+================================ -->
 <section class="passion-section">
 
   <h2 class="passion-title">
@@ -211,7 +248,11 @@
   </div>
 
 </section>
-
+<!-- ===============================
+     SECCIÓN DE NOVEDADES
+     Muestra los productos almacenados en
+     el arreglo "newsProducts".
+================================ -->
 <!-- NOVEDADES HOMBRE -->
 <section class="news-section">
 
@@ -227,8 +268,13 @@
     <a href="#">VER TODO</a>
 
   </div>
-
-  <div class="news-products">
+<div class="products-carousel">
+  <button
+    class="carousel-arrow left"
+    (click)="scrollProductos(newsScroll, -380)">
+    ←
+  </button>
+ <div class="news-products" #newsScroll>
 
     <div
       class="product-card"
@@ -269,13 +315,26 @@
     </div>
 
   </div>
+  <button
+  class="carousel-arrow right"
+  (click)="scrollProductos(newsScroll, 380)">
+  →
+</button>
+
+</div>
 
 </section>
-
+<!-- ===============================
+     TÍTULO DE LA TEMPORADA
+================================ -->
 <section class="season-title">
   <h2>COLORES Y ESTILOS DE TEMPORADA</h2>
 </section>
-
+<!-- ===============================
+     TARJETAS DE TEMPORADA
+     Presenta recomendaciones y tendencias
+     destacadas para el usuario.
+================================ -->
 <section class="season-cards">
 
   <div class="season-card">
@@ -318,7 +377,11 @@
   </div>
 
 </section>
-
+<!-- ===============================
+     INSPÍRATE Y CREA TU LOOK
+     Recorre el arreglo "lookProducts"
+     para mostrar combinaciones de estilo.
+================================ -->
 <!-- INSPÍRATE Y CREA TU LOOK -->
 <section class="look-section">
 
@@ -345,7 +408,11 @@
   </div>
 
 </section>
-
+<!-- ===============================
+     CATEGORÍAS DEL CATÁLOGO
+     Muestra enlaces rápidos organizados
+     por tipo de producto.
+================================ -->
 <section class="categories-footer">
 
   <div class="categories-container">
@@ -392,6 +459,67 @@
 
 }
 
+<!-- BOTÓN LATERAL DE COMENTARIOS -->
+<div class="comments-tab" (click)="abrirComentarios()">
+  COMENTARIOS
+</div>
+<div
+  class="comments-overlay"
+  *ngIf="mostrarComentarios"
+  (click)="cerrarComentarios()">
+
+  <div
+    class="comments-panel"
+    (click)="$event.stopPropagation()">
+
+    <button
+      class="close-comments"
+      (click)="cerrarComentarios()">
+      ✕
+    </button>
+    <div class="comments-content">
+
+  <img
+    class="comments-logo"
+    src="https://cdn-icons-png.flaticon.com/512/731/731962.png"
+    alt="Adidas Logo"
+  />
+
+  <h2>TU EXPERIENCIA</h2>
+
+  <a href="#" class="comments-help">AYUDA</a>
+
+  <p class="comments-text">
+    ¡Queremos escucharte! Buena o mala,
+    <strong>danos tu opinión.</strong>
+  </p>
+
+  <p class="comments-question">
+    ¿Cuál es la probabilidad de que recomiendes
+    <strong>adidas.co</strong> a tus amigos?
+    <span>*</span>
+  </p>
+
+  <div class="comments-scale-text">
+    <span>Muy poco probable</span>
+    <span>Muy probable</span>
+  </div>
+
+  <div class="comments-rating">
+    <button *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10]">
+      {{ number }}
+    </button>
+  </div>
+
+  <button class="comments-next">
+    SIGUIENTE →
+  </button>
+
+</div>
+
+  </div>
+
+</div>
 <router-outlet></router-outlet>
 
 @if (mostrarFooterCompleto()) {
