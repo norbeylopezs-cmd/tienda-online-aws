@@ -440,26 +440,6 @@
 }
 
 .checkout-success {
-  margin-top: 22px;
-  padding: 22px;
-  border: 1px solid #000;
-  box-shadow: 5px 5px 0 #000;
-  max-width: 420px;
-  background: #fff;
-}
-
-.checkout-success h3 {
-  margin: 0 0 10px;
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.checkout-success p {
-  margin: 0;
-  font-size: 16px;
-}
-.checkout-success {
   margin-top: 20px;
   padding: 16px;
   border: 2px solid #2e7d32;
