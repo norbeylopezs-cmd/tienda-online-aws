@@ -81,7 +81,7 @@ body {
 
   z-index: 1000;
 
-  padding: 0 40px;
+  padding: 0 28px;
   box-sizing: border-box;
 
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
@@ -109,11 +109,11 @@ transform: translateY(-8px);
   justify-content: center;
   align-items: center;
 
-  gap: 28px;
+  gap: 22px;
 
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  flex: 1;
+  margin-left: 35px;
+  margin-right: 25px;
 
   white-space: nowrap;
 }
@@ -141,14 +141,15 @@ transform: translateY(-8px);
   display: flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 8px;
 
-  margin-left: auto;
+  margin-left: 0;
+  flex-shrink: 0;
 }
 
 /* BUSCADOR REAL */
 .search-container {
-  width: 200px;
+  width: 160px;
   height: 32px;
 
   background: #eceff1;
@@ -467,32 +468,7 @@ transform: translateY(-8px);
   background: #222;
 }
 
-/* CARRITO */
-.cart-section {
-  margin: 60px 110px;
-  border-top: 1px solid #ddd;
-  padding-top: 30px;
-}
 
-.cart-section h2 {
-  font-size: 30px;
-  margin-bottom: 16px;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #ececec;
-  padding: 18px 0;
-}
-
-.cart-item button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  cursor: pointer;
-}
 .products::-webkit-scrollbar {
   height: 5px; /* más delgada */
   cursor: pointer;
@@ -665,35 +641,7 @@ transform: translateY(-8px);
   margin-top: 8px;
   cursor: pointer;
 }
-/* SCROLL PRODUCTOS ESTILO ADIDAS */
-.products-container::-webkit-scrollbar {
-  height: 3px;
-}
 
-.products-container::-webkit-scrollbar-track {
-  background: #e5e5e5;
-  margin: 0 95px; /* hace la barra más corta */
-}
-
-.products-container::-webkit-scrollbar-thumb {
-  background: black;
-}
-
-.products-container::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-/* Firefox */
-.products-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 12px;
-
-  scrollbar-width: thin;
-  scrollbar-color: black #e5e5e5;
-}
 .news-products .product-card {
   min-width: 300px;
 }
@@ -826,26 +774,6 @@ transform: translateY(-8px);
 }
 
 
-/* Scroll horizontal tipo Adidas */
-
-.look-grid::-webkit-scrollbar {
-  height: 6px;
-}
-
-.look-grid::-webkit-scrollbar-track {
-  background: #d9d9d9;
-  cursor: pointer;
-}
-
-.look-grid::-webkit-scrollbar-thumb {
-  background: black;
-  cursor: pointer;
-}
-
-.look-grid::-webkit-scrollbar-thumb:hover {
-  background: #111;
-}
-
 /* TARJETAS */
 
 .look-card {
@@ -884,7 +812,6 @@ transform: translateY(-8px);
 
 /* SCROLL */
 
-/* SCROLL */
 
 .look-grid::-webkit-scrollbar {
   height: 3px;
@@ -913,10 +840,11 @@ transform: translateY(-8px);
 .club-banner {
   background: #4d8b6a;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 50px;
-  padding: 40px 60px;
+
+  padding: 28px 110px;
+
   width: 100%;
 }
 .club-banner h2 {
@@ -925,12 +853,14 @@ transform: translateY(-8px);
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  white-space: nowrap;
 }
 
 .club-banner button {
   background: white;
   border: none;
-  padding: 18px 28px;
+  padding: 6px 13px;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
@@ -1058,10 +988,6 @@ transform: translateY(-8px);
 
 /* ICONOS */
 
-.social-icons i {
-  color: white;
-  font-size: 26px;
-}
 
 html,
 body {
@@ -1072,8 +998,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-app-root,
-app-hombre {
+app-root {
   display: block;
   width: 100%;
   margin: 0;
@@ -1132,10 +1057,6 @@ app-hombre {
   position: relative;
 }
 
-.products {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
 
 .carousel-arrow {
   position: absolute;
@@ -1156,8 +1077,4 @@ app-hombre {
 
 .carousel-arrow.right {
   right: 28px;
-}
-.news-products {
-  overflow-x: auto;
-  scroll-behavior: smooth;
 }

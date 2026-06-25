@@ -1,14 +1,14 @@
 .cart-page {
   background: #fff;
   min-height: 100vh;
-  padding: 95px 8% 80px;
+  padding: 95px 6% 80px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .cart-main {
   display: grid;
-  grid-template-columns: 1.45fr 0.75fr;
-  gap: 45px;
+  grid-template-columns: minmax(0, 1.6fr) 330px;
+  gap: 35px;
   align-items: flex-start;
 }
 
