@@ -140,10 +140,12 @@
   Procesando compra...
 </div>
 
+<!--
 <div class="checkout-success" *ngIf="compraExitosa">
   <h3>¡Compra realizada con éxito!</h3>
   <p>Tu pedido fue registrado correctamente.</p>
 </div>
+-->
 
 <p class="checkout-error" *ngIf="mensajeError">
   {{ mensajeError }}
@@ -212,4 +214,23 @@
     <p>© 2026 adidas Colombia LTDA</p>
 
   </footer>
+  <div class="success-modal-overlay" *ngIf="mostrarModalCompra">
+    <div class="success-modal">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>¡Todo listo!</h2>
+
+      <p>
+        Tu compra fue registrada correctamente.
+      </p>
+
+      <button type="button" (click)="continuarComprando()">
+        Continuar comprando
+      </button>
+
+    </div>
+  </div>
 </div>

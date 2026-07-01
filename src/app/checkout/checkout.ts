@@ -21,6 +21,7 @@ export class Checkout {
 
   mensajeError = '';
   compraExitosa = false;
+  mostrarModalCompra = false;
   procesandoCompra = false;
 
   constructor(
@@ -31,7 +32,7 @@ export class Checkout {
     this.mensajeError = '';
     this.compraExitosa = false;
     this.procesandoCompra = false;
-    
+    this.mostrarModalCompra = false;
 
 
     
@@ -49,6 +50,7 @@ export class Checkout {
 
       this.procesandoCompra = false;
       this.compraExitosa = true;
+      this.mostrarModalCompra = true;
 
       const pedido = {
       email: this.email,
@@ -68,5 +70,8 @@ export class Checkout {
       }
     });
   }
-
+  continuarComprando(): void {
+  this.mostrarModalCompra = false;
+  window.location.href = '/';
+}
 }
